@@ -1,42 +1,208 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+html, body {
+  overflow-x: hidden;
+}
+
+.Hero {
+  position: relative;
+  width: 100vw;
+  top: -4.7vw;
+}
+
+.Hero-background {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.Hero-background-image1 {
+  position: absolute;
+  width: 60.2vw;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.Hero-background-image2 {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: -1vw;
+  left: 0;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.Hero-logo {
+  position: absolute;
+  top: 3vw;
+  left: 9vw;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Hero-logo-bg {
+  position: absolute;
+  margin-top: -2vw;
+  width: 25vw;
+  height: 18vw;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, 
+    rgba(255,255,255,1) 0%, 
+    rgba(255,255,255,0.85) 40%, 
+    rgba(255,255,255,0.55) 70%, 
+    rgba(255,255,255,0) 100%);
+  filter: blur(2vw);
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  border-radius: 50%;
+  box-shadow: none;
+}
+
+.Hero-logo-image {
+  position: relative;
+  width: 22vw;
+  z-index: 3;
+  background: transparent;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.Hero-text {
+  position: relative;
+  z-index: 10;
+  color: #fff;
+  top:15vw;
+  left:8vw;
+}
+
+.Hero-text-title-one {
+  font-family: 'Poppins', sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 2px #fff;
+  font-weight: 700;
+  font-size: 7vw;
+}
+
+.Hero-text-title-two {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 7vw;
+  margin-top: -5vw;
+}
+
+.Hero-text-title-three {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 2.3vw;
+  margin-top: -4vw;
+  margin-left: -2vw;
+}
+
+.Hero-text-line {
+  position: absolute;
+  width: 7vw;
+  top: 3.5vw;
+  left: -12vw;
+}
+
+.Hero-text-title-three .bold {
+  font-weight: 700;
+}
+
+.Hero-text-button {
+  width: 23vw;
+  margin-top: 4vw;
+  height: 4vw;
+  font-size: 1.75vw;
+  font-family: "Montserrat", sans-serif;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.AboutUs {
+  position: relative;
+  width: 100vw;
+  margin-top: 27vw;
+  margin-left: 8vw;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.AboutUs-title {
+  font-family: 'Poppins', sans-serif;
+  color: #2C2C2C;
+  font-weight: 400;
+  font-size: 3.1vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.bold-aboutus {
+  font-weight: 700;
 }
 
-.card {
-  padding: 2em;
+.AboutUs-description-one, .AboutUs-description-two, .AboutUs-description-three {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5vw;
+  color: #2C2C2C;
+  width: 35vw;
+  font-weight: 500;
 }
 
-.read-the-docs {
-  color: #888;
+.AboutUS-line {
+  width: 10vw;
+  position: absolute;
+  top: 1.5vw;
+  left: -12vw;
+}
+
+.AboutUs-description-three {
+  margin-top: -1vw;
+  width: 30vw;
+}
+
+.AboutUS-image {
+  position: absolute;
+  left: 40vw;
+  bottom: 3vw;
+  width: 40vw;
+  z-index: 1;
+}
+
+.AboutUS-image-blue {
+  position: absolute;
+  left: 46vw;
+  width: 40vw;
+  bottom: 10.5vw ;
+  z-index: 0;
+}
+
+.AboutUS-button {
+  font-family: "Montserrat", sans-serif;
+  background-color: #2C5B7C;
+  color: #ffffff;
+  width: 13vw;
+  height: 5vw;
+  font-size: 1.8vw;
+  margin-left: 9vw;
+  font-weight: 700;
 }
