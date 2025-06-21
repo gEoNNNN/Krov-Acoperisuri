@@ -116,9 +116,9 @@ html, body {
 
 .Hero-text-line {
   position: absolute;
-  width: 7vw;
+  width: 6vw;
   top: 3.5vw;
-  left: -12vw;
+  left: -7vw;
 }
 
 .Hero-text-title-three .bold {
@@ -169,10 +169,10 @@ html, body {
 }
 
 .AboutUS-line {
-  width: 10vw;
+  width: 6vw;
   position: absolute;
   top: 1.5vw;
-  left: -12vw;
+  left: -7vw;
 }
 
 .AboutUs-description-three {
@@ -205,4 +205,140 @@ html, body {
   font-size: 1.8vw;
   margin-left: 9vw;
   font-weight: 700;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+
+.AboutUS-button:hover {
+  background: #17405a;
+  transform: scale(1.06);
+}
+
+.Services {
+  margin-top: 5vw;
+  position: relative;
+  padding-top: 14vw;
+}
+
+.Services-bg {
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.Services-title {
+  position: absolute;
+  font-family: 'Poppins', sans-serif;
+  font-size: 3vw;
+  color: #ffffff;
+  left: 50%;
+  top: 7vw;
+  z-index: 10;
+  transform: translateX(-50%);
+  font-weight: 300;
+}
+
+.Services-company {
+  position: absolute;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2vw;
+  color: #ffffff;
+  left: 50%;
+  top: 4vw;
+  z-index: 10;
+  transform: translateX(-50%);
+  font-weight: 300;
+}
+
+.Services-list {
+  margin-top: 0vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 7vw;
+  margin: 15vw auto 0 auto;
+  padding: 0;
+  list-style: none;
+  width: 60vw;
+  position: relative;
+  z-index: 2;
+}
+
+.Services-card {
+  width: 16vw;
+  min-height: 14vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.Services-card:hover {
+  transform: scale(1.035);
+  z-index: 2;
+}
+.Services-card:hover .Services-card-border {
+  border-color: #2C5B7C;
+  transition: border-color 0.25s;
+}
+
+.Services-card-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5vw;
+  color: #2C2C2C;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 5vw;
+}
+
+.Services-card-border {
+ border: 5px solid #A0A6AB;
+ width: 16vw;
+ height: 10vw;
+}
+
+.Services-card-image {
+  width: 21vw;
+  position: absolute;
+  bottom: 8vw;
+}
+
+.Service-button {
+  font-family: "Montserrat", sans-serif;
+  background-color: #2C5B7C;
+  color: #ffffff;
+  width: 18vw;
+  height: 5vw;
+  font-size: 1.5vw;
+  display: block;
+  margin: 5vw auto 0 auto;
+  font-weight: 700;
+  border-radius: 0;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+
+.Service-button:hover {
+  background: #17405a;
+  transform: scale(1.06);
+}
+
+.Gallery-title {
+  margin-top: 10vw;
+  margin-left: 10vw;
+  color: #2C2C2C;
+  font-size: 3vw;
+}
+
+.Gallery-line {
+  width: 6vw;
+  position: absolute;
+  left: 1vw;
+  margin-top: -3.5vw;
+}
+.Gallery-description {
+  
 }
