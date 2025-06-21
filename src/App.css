@@ -340,5 +340,129 @@ html, body {
   margin-top: -3.5vw;
 }
 .Gallery-description {
-  
+  font-family: "Montserrat", sans-serif;
+  font-size: 2vw;
+  font-weight: 400;
+  margin-left: 10vw;
+}
+
+.Gallery-line-two {
+  margin-left: 18vw;
+}
+
+.Gallery-list {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.Gallery-img2 {
+  position: absolute;
+  margin-top: 30vw;
+  margin-left: -29vw;
+}
+
+.Gallery-img3 {
+  position: absolute;
+  margin-top: 44vw;
+  margin-left: -66.1vw;
+}
+
+.Gallery-img4 {
+  position: absolute;
+  margin-top: 44vw;
+  margin-left: -47.5vw;
+}
+
+.Gallery-img5 {
+  position: absolute;
+  margin-top: 30vw;
+  margin-left: -47.5vw;
+}
+
+.Gallery-img6 {
+  position: absolute;
+  margin-top: 30vw;
+  margin-left: -66.1vw;
+}
+
+.Gallery-button {
+  font-family: "Montserrat", sans-serif;
+  background-color: #2C5B7C;
+  color: #ffffff;
+  width: 18vw;
+  height: 5vw;
+  font-size: 1.5vw;
+  display: block;
+  margin: 33vw auto 0 auto;
+  font-weight: 700;
+  border-radius: 0;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+
+.Gallery-button:hover {
+  background: #17405a;
+  transform: scale(1.06);
+}
+
+.FAQ {
+  margin-top: 75vw;
+}
+
+.FAQ-title {
+  font-size: 3.5vw;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 10vw;
+}
+
+.FAQ-line {
+  width: 6vw;
+  position: absolute;
+  left: 1vw;
+  margin-top: -4vw;
+}
+
+.FAQ-vector {
+  position: absolute;
+  margin-left: 65vw;
+  margin-top: -30vw;
+  z-index: -1;
+}
+
+.FAQ-list {
+  width: 50vw;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 4vw;
+}
+
+.FAQ-question-one h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.7vw;
+  color: #ffffff;
+  font-weight: 600;
+  margin: 0;
+  text-align: left; 
+  flex: 1;
+  margin-left: 2vw;
+}
+
+.FAQ-question-one {
+  background: #2C5B7C;
+  padding: 2vw 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.FAQ-question-one img {
+  width: 2vw;
+  height: 2vw;
+  margin-left: 2vw;
 }

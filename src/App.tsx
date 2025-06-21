@@ -10,6 +10,15 @@ import secrivesbg from "./assets/Group 55.png"
 import servicecard1 from "./assets/Rectangle 41.png"
 import servicecard2 from "./assets/Group 45.png"
 import servicecard3 from "./assets/image.png"
+import galleryline from "./assets/Line 4 (1).png"
+import gallerryimage1 from "./assets/Rectangle 47.png"
+import gallerryimage2 from "./assets/Rectangle 48.png"
+import gallerryimage3 from "./assets/Rectangle 49.png"
+import gallerryimage4 from "./assets/Rectangle 50.png"
+import gallerryimage5 from "./assets/Rectangle 51.png"
+import gallerryimage6 from "./assets/Rectangle 52.png"
+import FAQvector from "./assets/Vector 3.png"
+import plus from "./assets/+.png"
 
 function App() {
 
@@ -74,20 +83,37 @@ function App() {
           <h1 className='Gallery-title'>Galerie</h1>
           <img src={aboutusline} className='Gallery-line' />
           <h1 className='Gallery-description'>Descoperă proiectele noastre finalizate, realizate cu grijă, precizie și materiale de top.</h1>
-          <div className='Gallery-row'>
-            <div className='Gallery-column'>
-              <img src="" alt="" />
-            </div>
-            <div className='Gallery-column'>
-              <img src="" alt="" />
-              <img src="" alt="" />
-              <img src="" alt="" />
-            </div>
-            <div className='Gallery-column'>
-              <img src="" alt="" />
-              <img src="" alt="" />
-            </div>
+          <img src={galleryline} className='Gallery-line-two' />
+          <div className='Gallery-list'>
+            <img src={gallerryimage1} alt="" className="Gallery-img1" />
+            <img src={gallerryimage2} alt="" className="Gallery-img2" />
+            <img src={gallerryimage3} alt="" className="Gallery-img3" />
+            <img src={gallerryimage4} alt="" className="Gallery-img4" />
+            <img src={gallerryimage5} alt="" className="Gallery-img5" />
+            <img src={gallerryimage6} alt="" className="Gallery-img6" />
+            <button className='Gallery-button'>Vezi mai mult</button>
           </div>
+        </div>
+        <div className='FAQ'>
+          <h1 className='FAQ-title'>FAQ's</h1>
+          <img src={aboutusline} className='FAQ-line' />
+          <img src={FAQvector} className='FAQ-vector' />
+          <ul className='FAQ-list'>
+            <li className='FAQ-question-one'>
+                <img src={plus} />
+                <h1>Oferiți consultanță gratuită?</h1>
+                
+            </li>
+            <li className='FAQ-question-one'>
+                <img src={plus} />
+                <h1>Pot cumpăra doar materialele fără montaj?</h1>
+                
+            </li>
+            <li className='FAQ-question-one'>
+                <img src={plus} />
+                <h1>Cum pot cere o ofertă?</h1>
+            </li>
+          </ul>
         </div>
     </>
   )
