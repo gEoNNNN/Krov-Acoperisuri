@@ -19,8 +19,38 @@ import gallerryimage5 from "./assets/Rectangle 51.png"
 import gallerryimage6 from "./assets/Rectangle 52.png"
 import FAQvector from "./assets/Vector 3.png"
 import plus from "./assets/+.png"
+import { useState } from "react";
 
 function App() {
+  // FAQ data
+  const faqData = [
+    {
+      question: "Oferiți consultanță gratuită?",
+      answer: "Da, oferim consultanță gratuită pentru toate proiectele dumneavoastră."
+    },
+    {
+      question: "Ce garanție oferiți pentru lucrări?",
+      answer: "Oferim garanție de până la 10 ani pentru lucrările executate."
+    },
+    {
+      question: "Pot cumpăra doar materialele fără montaj?",
+      answer: "Da, puteți achiziționa doar materialele fără serviciul de montaj."
+    },
+    {
+      question: "Lucrați și cu persoane juridice (companii)?",
+      answer: "Da, colaborăm atât cu persoane fizice, cât și cu companii."
+    },
+    {
+      question: "Cum pot cere o ofertă?",
+      answer: "Ne puteți contacta telefonic sau prin formularul de pe site pentru o ofertă personalizată."
+    }
+  ];
+
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleToggle = (idx: number) => {
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
 
   return (
     <>
@@ -99,20 +129,39 @@ function App() {
           <img src={aboutusline} className='FAQ-line' />
           <img src={FAQvector} className='FAQ-vector' />
           <ul className='FAQ-list'>
-            <li className='FAQ-question-one'>
-                <img src={plus} />
-                <h1>Oferiți consultanță gratuită?</h1>
-                
-            </li>
-            <li className='FAQ-question-one'>
-                <img src={plus} />
-                <h1>Pot cumpăra doar materialele fără montaj?</h1>
-                
-            </li>
-            <li className='FAQ-question-one'>
-                <img src={plus} />
-                <h1>Cum pot cere o ofertă?</h1>
-            </li>
+            {faqData.map((faq, idx) => (
+              <li
+                key={faq.question}
+                className={`FAQ-question-one${openIndex === idx ? " open" : ""}`}
+                onClick={() => handleToggle(idx)}
+                style={{
+                  background: openIndex === idx ? "#17405a" : "#2C5B7C",
+                  transition: "background 0.25s, min-height 0.25s",
+                  minHeight: openIndex === idx ? "8vw" : "auto"
+                }}
+              >
+                <span className="FAQ-icon">
+                  <img
+                    src={plus}
+                    style={{
+                      transition: "transform 0.2s, opacity 0.2s",
+                      opacity: openIndex === idx ? 0 : 1,
+                    }}
+                  />
+                  {openIndex === idx && (
+                    <span className="minus-bar" />
+                  )}
+                </span>
+                <div style={{ flex: 1 }}>
+                  <h1>{faq.question}</h1>
+                  {openIndex === idx && (
+                    <div className="FAQ-answer">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
     </>

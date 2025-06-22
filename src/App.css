@@ -445,7 +445,7 @@ html, body {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.7vw;
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 500;
   margin: 0;
   text-align: left; 
   flex: 1;
@@ -465,4 +465,50 @@ html, body {
   width: 2vw;
   height: 2vw;
   margin-left: 2vw;
+}
+
+.FAQ-question-one.open h1 {
+  color: #000000;
+  transition: color 0.25s;
+}
+
+.FAQ-question-one.open {
+  background: #ffffff !important;
+  min-height: 8vw;
+  transition: background 0.25s, min-height 0.25s;
+  box-shadow: 0 4px 24px 0 rgba(44, 91, 124, 0.18);
+}
+.FAQ-answer {
+  margin-top: 2vw;
+  opacity: 1;
+  transition: opacity 0.2s, color 0.2s;
+  color: #000;
+  font-size: 1.5vw;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+.FAQ-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2vw;
+  height: 2vw;
+}
+
+.FAQ-question-one.open .FAQ-icon::after {
+  content: '';
+  display: block;
+  width: 2vw;
+  height: 0.3vw;
+  background: #2C5B7C;
+  border-radius: 0.15vw;
+  position: absolute;
+  left: 0;
+  top: -2.1vw;
+  transform: translateY(-50%);
+}
+.FAQ-question-one.open .FAQ-icon img {
+  opacity: 0;
 }
