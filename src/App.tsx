@@ -11,15 +11,19 @@ import servicecard1 from "./assets/Rectangle 41.png"
 import servicecard2 from "./assets/Group 45.png"
 import servicecard3 from "./assets/image.png"
 import galleryline from "./assets/Line 4 (1).png"
-import gallerryimage1 from "./assets/Rectangle 47.png"
-import gallerryimage2 from "./assets/Rectangle 48.png"
-import gallerryimage3 from "./assets/Rectangle 49.png"
-import gallerryimage4 from "./assets/Rectangle 50.png"
-import gallerryimage5 from "./assets/Rectangle 51.png"
-import gallerryimage6 from "./assets/Rectangle 52.png"
+import gallerryimage from "./assets/Group 68.png"
 import FAQvector from "./assets/Vector 3.png"
 import plus from "./assets/+.png"
-import { useState } from "react";
+import footercard from "./assets/Group 67.png"
+import { useState, useEffect } from "react";
+import facebook from "./assets/ic_baseline-facebook.png"
+import instagram from "./assets/mdi_instagram.png"
+import tiktok from "./assets/ic_baseline-tiktok.png"
+import footerline from "./assets/Line 16 (1).png"
+import mobilegallery from "./assets/mobilegallery.png"
+import mobilefooter from "./assets/mobilefooter.png"
+import LiveChat from "./LiveChat";
+
 
 function App() {
   // FAQ data
@@ -52,6 +56,21 @@ function App() {
     setOpenIndex(openIndex === idx ? null : idx);
   };
 
+  // Add this state for mobile card index
+  const [mobileCardIndex, setMobileCardIndex] = useState(0);
+
+  // Cycle cards every 5 seconds on mobile
+  useEffect(() => {
+    const isMobile = window.innerWidth < 640;
+    if (!isMobile) return;
+
+    const interval = setInterval(() => {
+      setMobileCardIndex((prev) => (prev + 1) % 3); // 3 cards
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <div className='Hero'>
@@ -83,8 +102,8 @@ function App() {
             <li>precum și comercializarea materialelor aferente.</li>
           </ul>
           <img src={aboutusline} className='AboutUS-line' />
-          <img src={aboutusimage} className='AboutUS-image' />
-          <img src={aboutusblueimage} className='AboutUS-image-blue' />
+          <img src={aboutusimage} className="AboutUS-image" />
+          <img src={aboutusblueimage} className="AboutUS-image-blue" />
           <button className='AboutUS-button'>Galerie</button>
         </div>
         <div className='Services'>
@@ -92,21 +111,48 @@ function App() {
           <h1 className='Services-company'>Krov Acoperișuri</h1>
           <h1 className='Services-title'><span className="bold-aboutus">Produse </span> & Servicii</h1>
           <ul className='Services-list'>
-            <li className='Services-card'>
-              <div className='Services-card-border'><h1 className='Services-card-text'>Țiglă metalică</h1></div>
-              <img src={servicecard1} className='Services-card-image' />
-            </li>
-            <li className='Services-card'>
-              <div className='Services-card-border'><h1 className='Services-card-text'>Țiglă ceramică</h1></div>
-              <img src={servicecard2} className='Services-card-image' />
-            </li>
-            <li className='Services-card'>
-              <div className='Services-card-border'>
-                <h1 className='Services-card-text'>Streașini personalizate</h1>
-              </div>
-              <img src={servicecard3} className='Services-card-image' />
-            </li>
+            {[
+              {
+                text: "Țiglă metalică",
+                img: servicecard1,
+              },
+              {
+                text: "Țiglă ceramică",
+                img: servicecard2,
+              },
+              {
+                text: "Streașini personalizate",
+                img: servicecard3,
+              },
+            ].map((card, idx) => (
+              <li
+                className='Services-card'
+                key={card.text}
+                style={
+                  window.innerWidth < 640
+                    ? { display: mobileCardIndex === idx ? "flex" : "none" }
+                    : {}
+                }
+              >
+                <div className='Services-card-border'>
+                  <h1 className='Services-card-text'>{card.text}</h1>
+                </div>
+                <img src={card.img} className='Services-card-image' />
+              </li>
+            ))}
           </ul>
+          {/* Dots for mobile */}
+          {window.innerWidth < 640 && (
+            <div className="Services-dots">
+              {[0, 1, 2].map((idx) => (
+                <span
+                  key={idx}
+                  className={`Services-dot${mobileCardIndex === idx ? " active" : ""}`}
+                  onClick={() => setMobileCardIndex(idx)}
+                />
+              ))}
+            </div>
+          )}
           <button className='Service-button'>Află mai mult</button>
         </div>
         <div className='Gallery'>
@@ -115,12 +161,8 @@ function App() {
           <h1 className='Gallery-description'>Descoperă proiectele noastre finalizate, realizate cu grijă, precizie și materiale de top.</h1>
           <img src={galleryline} className='Gallery-line-two' />
           <div className='Gallery-list'>
-            <img src={gallerryimage1} alt="" className="Gallery-img1" />
-            <img src={gallerryimage2} alt="" className="Gallery-img2" />
-            <img src={gallerryimage3} alt="" className="Gallery-img3" />
-            <img src={gallerryimage4} alt="" className="Gallery-img4" />
-            <img src={gallerryimage5} alt="" className="Gallery-img5" />
-            <img src={gallerryimage6} alt="" className="Gallery-img6" />
+              <img src={mobilegallery} className="Gallery-mobile-image" />
+              <img src={gallerryimage} className='Gallery-list-image' />
             <button className='Gallery-button'>Vezi mai mult</button>
           </div>
         </div>
@@ -164,6 +206,28 @@ function App() {
             ))}
           </ul>
         </div>
+        <div className='Footer'>
+          <img src={footercard} className='Footer-bg'/>
+          <img src={mobilefooter} className='Footer-mobile-bg'/>
+          <h1 className='Footer-text'>Contactați-ne pentru Assistență</h1>
+          <button className='Footer-button'>Sunați</button>
+          <ul className='Footer-socials'>
+            <li className='Footer-socials-facebook'><a href="#"><img src={facebook} alt="" /></a></li>
+            <li className='Footer-socials-instagram'><a href="#"><img src={instagram} alt="" /></a></li>
+            <li className='Footer-socials-tiktok'><a href="#"><img src={tiktok} alt="" /></a></li>
+          </ul>
+          <h1 className='Footer-links'>Linkuri</h1>
+          <ul className='Footer-links-list'>
+            <li><a href="#">Acasa</a></li>
+            <li><a href="#">Companie</a></li>
+            <li><a href="#">Produse & Servicii</a></li>
+            <li><a href="#">Galerie</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+          <img src={footerline} className='Footer-line' />
+          <h1 className='Footer-Copyright'>Copyright © 2019 All rights reserved  by Krov Acoperișuri</h1>
+      </div>
+      <LiveChat />
     </>
   )
 }
