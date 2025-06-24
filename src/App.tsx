@@ -82,6 +82,16 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Smooth scroll for navbar links
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       {/* Hamburger icon for mobile */}
@@ -108,12 +118,12 @@ function App() {
       {/* Desktop Navbar */}
       <div className='navbar'>
         <ul className='navbar-list'>
-          <li className='navbar-list-item'><a href="#home">Acasă</a></li>
-          <li className='navbar-list-item'><a href="#about">Companie</a></li>
-          <li className='navbar-list-item'><a href="#services">Produse & Servicii</a></li>
-          <li className='navbar-list-item'><a href="#gallery">Galerie</a></li>
-          <li className='navbar-list-item'><a href="#faq">FAQ</a></li>
-          <li className='navbar-list-item'><a href="#contact">Contact</a></li>
+          <li className='navbar-list-item'><a href="#home" onClick={e => handleNavClick(e, "home")}>Acasă</a></li>
+          <li className='navbar-list-item'><a href="#about" onClick={e => handleNavClick(e, "about")}>Companie</a></li>
+          <li className='navbar-list-item'><a href="#services" onClick={e => handleNavClick(e, "services")}>Produse & Servicii</a></li>
+          <li className='navbar-list-item'><a href="#gallery" onClick={e => handleNavClick(e, "gallery")}>Galerie</a></li>
+          <li className='navbar-list-item'><a href="#faq" onClick={e => handleNavClick(e, "faq")}>FAQ</a></li>
+          <li className='navbar-list-item'><a href="#contact" onClick={e => handleNavClick(e, "contact")}>Contact</a></li>
         </ul>
       </div>
       {/* Mobile Navbar Overlay */}
@@ -131,12 +141,12 @@ function App() {
             </svg>
           </button>
           <ul className='mobile-navbar-list'>
-            <li><a href="#home" onClick={() => setMobileMenuOpen(false)}>Acasă</a></li>
-            <li><a href="#about" onClick={() => setMobileMenuOpen(false)}>Companie</a></li>
-            <li><a href="#services" onClick={() => setMobileMenuOpen(false)}>Produse & Servicii</a></li>
-            <li><a href="#gallery" onClick={() => setMobileMenuOpen(false)}>Galerie</a></li>
-            <li><a href="#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a></li>
-            <li><a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
+            <li><a href="#home" onClick={e => handleNavClick(e, "home")}>Acasă</a></li>
+            <li><a href="#about" onClick={e => handleNavClick(e, "about")}>Companie</a></li>
+            <li><a href="#services" onClick={e => handleNavClick(e, "services")}>Produse & Servicii</a></li>
+            <li><a href="#gallery" onClick={e => handleNavClick(e, "gallery")}>Galerie</a></li>
+            <li><a href="#faq" onClick={e => handleNavClick(e, "faq")}>FAQ</a></li>
+            <li><a href="#contact" onClick={e => handleNavClick(e, "contact")}>Contact</a></li>
           </ul>
         </div>
       )}
@@ -317,11 +327,11 @@ function App() {
           </ul>
           <h1 className='Footer-links'>Linkuri</h1>
             <ul className='Footer-links-list'>
-              <li><a href="#home">Acasa</a></li>
-              <li><a href="#about">Companie</a></li>
-              <li><a href="#services">Produse & Servicii</a></li>
-              <li><a href="#gallery">Galerie</a></li>
-              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#home" onClick={e => handleNavClick(e, "home")}>Acasa</a></li>
+              <li><a href="#about" onClick={e => handleNavClick(e, "about")}>Companie</a></li>
+              <li><a href="#services" onClick={e => handleNavClick(e, "services")}>Produse & Servicii</a></li>
+              <li><a href="#gallery" onClick={e => handleNavClick(e, "gallery")}>Galerie</a></li>
+              <li><a href="#faq" onClick={e => handleNavClick(e, "faq")}>FAQ</a></li>
             </ul>
           <img src={footerline} className='Footer-line' />
           <h1 className='Footer-Copyright'>Copyright © 2019 All rights reserved  by Krov Acoperișuri</h1>
