@@ -108,12 +108,12 @@ function App() {
       {/* Desktop Navbar */}
       <div className='navbar'>
         <ul className='navbar-list'>
-          <li className='navbar-list-item'><a href="#">Acasă</a></li>
-          <li className='navbar-list-item'><a href="#">Companie</a></li>
-          <li className='navbar-list-item'><a href="#">Produse & Servicii</a></li>
-          <li className='navbar-list-item'><a href="#">Galerie</a></li>
-          <li className='navbar-list-item'><a href="#">FAQ</a></li>
-          <li className='navbar-list-item'><a href="#">Contact</a></li>
+          <li className='navbar-list-item'><a href="#home">Acasă</a></li>
+          <li className='navbar-list-item'><a href="#about">Companie</a></li>
+          <li className='navbar-list-item'><a href="#services">Produse & Servicii</a></li>
+          <li className='navbar-list-item'><a href="#gallery">Galerie</a></li>
+          <li className='navbar-list-item'><a href="#faq">FAQ</a></li>
+          <li className='navbar-list-item'><a href="#contact">Contact</a></li>
         </ul>
       </div>
       {/* Mobile Navbar Overlay */}
@@ -131,20 +131,25 @@ function App() {
             </svg>
           </button>
           <ul className='mobile-navbar-list'>
-            <li><a href="#">Acasă</a></li>
-            <li><a href="#">Companie</a></li>
-            <li><a href="#">Produse & Servicii</a></li>
-            <li><a href="#">Galerie</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#home" onClick={() => setMobileMenuOpen(false)}>Acasă</a></li>
+            <li><a href="#about" onClick={() => setMobileMenuOpen(false)}>Companie</a></li>
+            <li><a href="#services" onClick={() => setMobileMenuOpen(false)}>Produse & Servicii</a></li>
+            <li><a href="#gallery" onClick={() => setMobileMenuOpen(false)}>Galerie</a></li>
+            <li><a href="#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a></li>
+            <li><a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
           </ul>
         </div>
       )}
       <div className="navbar-phone-number">
         <img src={PhoneIcon} className="navbar-phone-icon" alt="Phone" />
-        <span className="navbar-phone-text">(+373) 686-26-333</span>
+        <a
+          className="navbar-phone-text"
+          href="tel:+37368626333"
+        >
+          (+373) 686-26-333
+        </a>
       </div>
-      <div className='Hero'>
+      <div className='Hero' id="home">
         <div className='Hero-background'>
           <img src={background1}  className='Hero-background-image1' />
           <img src={background2}  className='Hero-background-image2' />
@@ -160,7 +165,15 @@ function App() {
           <h1 className='Hero-text-title-three'>
             <span className="bold">Soluții</span> complete pentru <span className="bold">case</span> și <span className="bold">afaceri.</span>
           </h1>
-          <button className='Hero-text-button'>Produsele Noastre</button>
+          <button className='Hero-text-button'
+          onClick={() => {
+              const section = document.getElementById("services");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+              >Produsele Noastre
+          </button>
         </div>
         </div>
         <div className='AboutUs'>
@@ -172,12 +185,22 @@ function App() {
             <li>instalarea sistemelor de streașină și scurgere,</li>
             <li>precum și comercializarea materialelor aferente.</li>
           </ul>
-          <img src={aboutusline} className='AboutUS-line' />
+          <img src={aboutusline} className='AboutUS-line'  id="about"/>
           <img src={aboutusimage} className="AboutUS-image" />
           <img src={aboutusblueimage} className="AboutUS-image-blue" />
-          <button className='AboutUS-button'>Galerie</button>
+          <button
+            className='AboutUS-button'
+            onClick={() => {
+              const section = document.getElementById("gallery");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            Galerie
+          </button>
         </div>
-        <div className='Services'>
+        <div className='Services' id="services">
           <img src={secrivesbg} className='Services-bg' />
           <h1 className='Services-company'>Krov Acoperișuri</h1>
           <h1 className='Services-title'><span className="bold-aboutus">Produse </span> & Servicii</h1>
@@ -226,7 +249,7 @@ function App() {
           )}
           <button className='Service-button'>Află mai mult</button>
         </div>
-        <div className='Gallery'>
+        <div className='Gallery' id="gallery">
           <h1 className='Gallery-title'>Galerie</h1>
           <img src={aboutusline} className='Gallery-line' />
           <h1 className='Gallery-description'>Descoperă proiectele noastre finalizate, realizate cu grijă, precizie și materiale de top.</h1>
@@ -237,7 +260,7 @@ function App() {
             <button className='Gallery-button'>Vezi mai mult</button>
           </div>
         </div>
-        <div className='FAQ'>
+        <div className='FAQ' id="faq">
           <h1 className='FAQ-title'>FAQ's</h1>
           <img src={aboutusline} className='FAQ-line' />
           <img src={FAQvector} className='FAQ-vector' />
@@ -277,24 +300,29 @@ function App() {
             ))}
           </ul>
         </div>
-        <div className='Footer'>
+        <div className='Footer' id="contact">
           <img src={footercard} className='Footer-bg'/>
           <img src={mobilefooter} className='Footer-mobile-bg'/>
           <h1 className='Footer-text'>Contactați-ne pentru Assistență</h1>
-          <button className='Footer-button'>Sunați</button>
+          <button
+              className='Footer-button'
+              onClick={() => { window.location.href = 'tel:+37368626333'; }}
+            >
+              Sunați
+            </button>
           <ul className='Footer-socials'>
             <li className='Footer-socials-facebook'><a href="#"><img src={facebook} alt="" /></a></li>
             <li className='Footer-socials-instagram'><a href="#"><img src={instagram} alt="" /></a></li>
             <li className='Footer-socials-tiktok'><a href="#"><img src={tiktok} alt="" /></a></li>
           </ul>
           <h1 className='Footer-links'>Linkuri</h1>
-          <ul className='Footer-links-list'>
-            <li><a href="#">Acasa</a></li>
-            <li><a href="#">Companie</a></li>
-            <li><a href="#">Produse & Servicii</a></li>
-            <li><a href="#">Galerie</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
+            <ul className='Footer-links-list'>
+              <li><a href="#home">Acasa</a></li>
+              <li><a href="#about">Companie</a></li>
+              <li><a href="#services">Produse & Servicii</a></li>
+              <li><a href="#gallery">Galerie</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
           <img src={footerline} className='Footer-line' />
           <h1 className='Footer-Copyright'>Copyright © 2019 All rights reserved  by Krov Acoperișuri</h1>
       </div>
