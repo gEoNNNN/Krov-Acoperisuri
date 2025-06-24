@@ -23,10 +23,10 @@ import footerline from "./assets/Line 16 (1).png"
 import mobilegallery from "./assets/mobilegallery.png"
 import mobilefooter from "./assets/mobilefooter.png"
 import LiveChat from "./LiveChat";
+import PhoneIcon from "./assets/material-symbols_call.png"
 
 
 function App() {
-  // FAQ data
   const faqData = [
     {
       question: "Oferiți consultanță gratuită?",
@@ -77,6 +77,20 @@ function App() {
         <div className='Hero-background'>
           <img src={background1}  className='Hero-background-image1' />
           <img src={background2}  className='Hero-background-image2' />
+        </div>
+        <div className='navbar'>
+          <ul className='navbar-list'>
+            <li className='navbar-list-item'><a href="#">Acasă</a></li>
+            <li className='navbar-list-item'><a href="#">Companie</a></li>
+            <li className='navbar-list-item'><a href="#">Produse & Servicii</a></li>
+            <li className='navbar-list-item'><a href="#">Galerie</a></li>
+            <li className='navbar-list-item'><a href="#">FAQ</a></li>
+            <li className='navbar-list-item'><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div className="navbar-phone-number">
+          <img src={PhoneIcon} className="navbar-phone-icon" alt="Phone" />
+          <span className="navbar-phone-text">(+373) 686-26-333</span>
         </div>
         <div className='Hero-logo'>
           <div className='Hero-logo-bg'></div>
@@ -141,7 +155,7 @@ function App() {
               </li>
             ))}
           </ul>
-          {/* Dots for mobile */}
+          {/* Dots */}
           {window.innerWidth < 640 && (
             <div className="Services-dots">
               {[0, 1, 2].map((idx) => (

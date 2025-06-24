@@ -41,6 +41,109 @@ html, body {
   user-select: none;
 }
 
+.navbar-phone-number {
+  position: fixed;
+  top: 5vw;
+  right: 2vw;
+  z-index: 2003;
+  align-items: center;
+  background: #2C5B7C;
+  padding: 1.22vw 1.8vw;
+  overflow: visible;
+}
+
+.navbar-phone-number::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 1.8vw;
+  right: 1.8vw;
+  bottom: 0.7vw;
+  height: 0.18vw;
+  background: #fff;
+  border-radius: 1vw;
+  width: 0;
+  transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+
+.navbar-phone-number:hover::after {
+  width: calc(100% - 3.6vw);
+}
+
+.navbar-phone-icon {
+  width: 1.6vw;
+  height: 1.6vw;
+  position: relative;
+  top: 0.5vw;
+  right: 0.5vw;
+}
+
+
+.navbar-phone-text {
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1vw;
+  font-weight: 600;
+}
+
+.navbar {
+  position: fixed;
+  top: 5vw;
+  right: 17vw;
+  z-index: 2002;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 4px 24px 0 rgba(44, 91, 124, 0.10);
+  padding: 1.5vw 2vw;
+}
+
+
+.navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2vw;
+  align-items: center;
+}
+
+.navbar-list-item {
+  display: inline;
+}
+
+.navbar-list-item a {
+  font-family: "Montserrat", sans-serif;
+  color: #2C2C2C;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1vw;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.navbar-list-item a::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -0.3vw;
+  width: 0;
+  height: 0.18vw;
+  background: #2C5B7C;
+  border-radius: 1vw;
+  transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar-list-item a:hover {
+  color: #2C5B7C;
+}
+
+.navbar-list-item a:hover::after {
+  width: 100%;
+}
+
+
 .Hero-logo {
   position: absolute;
   top: 3vw;
