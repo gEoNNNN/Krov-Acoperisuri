@@ -4,12 +4,13 @@ import ChatButtonBG from "./assets/Group 51.png";
 import openchaticon from "./assets/openchatbutton.png"
 import livechatopenbg from "./assets/Group 71.png"
 import closebutton from "./assets/closebutton.png"
+import sendicon from "./assets/sendicon.png"
 
 const LiveChat: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [message, setMessage] = useState("");
 
-  // Show modal when open is set to true
   React.useEffect(() => {
     if (open) setVisible(true);
     else {
@@ -18,6 +19,13 @@ const LiveChat: React.FC = () => {
       return () => clearTimeout(timeout);
     }
   }, [open]);
+
+  const handleSend = () => {
+    if (message.trim() !== "") {
+      console.log(message);
+      setMessage("");
+    }
+  };
 
   return (
     <div>
@@ -50,6 +58,24 @@ const LiveChat: React.FC = () => {
             onClick={() => setOpen(false)}
           />
           <h1 className="live-chat-open-title">Krov Acoperișuri</h1>
+          <div className="livechat-input-row">
+            <input
+              type="text"
+              className="livechat-input"
+              placeholder="Scrie-ți mesajul aici..."
+              value={message}
+              onChange={e => setMessage(e.target.value)}
+              onKeyDown={e => { if (e.key === "Enter") handleSend(); }}
+            />
+            <button
+              className="livechat-send-btn"
+              onClick={handleSend}
+              type="button"
+              aria-label="Trimite mesaj"
+            >
+              <img src={sendicon} alt="Send" />
+            </button>
+          </div>
         </div>
       )}
     </div>
