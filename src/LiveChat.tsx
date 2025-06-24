@@ -6,10 +6,23 @@ import livechatopenbg from "./assets/Group 71.png"
 import closebutton from "./assets/closebutton.png"
 import sendicon from "./assets/sendicon.png"
 
+type ChatMessage = {
+  id: number;
+  text: string;
+  from: "user" | "bot";
+};
+
+const initialMessages: ChatMessage[] = [
+  { id: 1, text: "Hey! 👋 Eu sunt Krov Acoperișuri un assistent digital.", from: "bot" },
+  { id: 2, text: "Cu ce te pot ajuta astăzi?", from: "bot" }
+];
+
 const LiveChat: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
+
 
   React.useEffect(() => {
     if (open) setVisible(true);
@@ -22,11 +35,13 @@ const LiveChat: React.FC = () => {
 
   const handleSend = () => {
     if (message.trim() !== "") {
-      console.log(message);
+      setMessages(prev => [
+        ...prev,
+        { id: Date.now(), text: message, from: "user" }
+      ]);
       setMessage("");
     }
   };
-
   return (
     <div>
       <img
@@ -58,6 +73,17 @@ const LiveChat: React.FC = () => {
             onClick={() => setOpen(false)}
           />
           <h1 className="live-chat-open-title">Krov Acoperișuri</h1>
+          {/* Messages container */}
+          <div className="livechat-messages">
+            {messages.map(msg => (
+              <div
+                key={msg.id}
+                className={`livechat-message livechat-message-${msg.from}`}
+              >
+                {msg.text}
+              </div>
+            ))}
+          </div>
           <div className="livechat-input-row">
             <input
               type="text"
