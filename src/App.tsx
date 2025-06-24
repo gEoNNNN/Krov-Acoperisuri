@@ -71,26 +71,83 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Close menu on resize if not mobile
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 630) setMobileMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
+      {/* Hamburger icon for mobile */}
+      <button
+        className={`hamburger-menu${mobileMenuOpen ? " open" : ""}`}
+        onClick={() => setMobileMenuOpen((v) => !v)}
+        aria-label="Open navigation menu"
+      >
+        {!mobileMenuOpen ? (
+          // Black hamburger SVG icon
+          <svg width="32" height="32" viewBox="0 0 32 32" style={{display: 'block'}} fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect y="6" width="32" height="4" rx="2" fill="#111"/>
+            <rect y="14" width="32" height="4" rx="2" fill="#111"/>
+            <rect y="22" width="32" height="4" rx="2" fill="#111"/>
+          </svg>
+        ) : (
+          <>
+            <span />
+            <span />
+            <span />
+          </>
+        )}
+      </button>
+      {/* Desktop Navbar */}
+      <div className='navbar'>
+        <ul className='navbar-list'>
+          <li className='navbar-list-item'><a href="#">Acasă</a></li>
+          <li className='navbar-list-item'><a href="#">Companie</a></li>
+          <li className='navbar-list-item'><a href="#">Produse & Servicii</a></li>
+          <li className='navbar-list-item'><a href="#">Galerie</a></li>
+          <li className='navbar-list-item'><a href="#">FAQ</a></li>
+          <li className='navbar-list-item'><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      {/* Mobile Navbar Overlay */}
+      {mobileMenuOpen && (
+        <div className="mobile-navbar-overlay">
+          <button
+            className="mobile-navbar-close"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Închide meniul"
+          >
+            {/* White X SVG */}
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <line x1="8" y1="8" x2="24" y2="24" stroke="#fff" strokeWidth="3" strokeLinecap="round"/>
+              <line x1="24" y1="8" x2="8" y2="24" stroke="#fff" strokeWidth="3" strokeLinecap="round"/>
+            </svg>
+          </button>
+          <ul className='mobile-navbar-list'>
+            <li><a href="#">Acasă</a></li>
+            <li><a href="#">Companie</a></li>
+            <li><a href="#">Produse & Servicii</a></li>
+            <li><a href="#">Galerie</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      )}
+      <div className="navbar-phone-number">
+        <img src={PhoneIcon} className="navbar-phone-icon" alt="Phone" />
+        <span className="navbar-phone-text">(+373) 686-26-333</span>
+      </div>
       <div className='Hero'>
         <div className='Hero-background'>
           <img src={background1}  className='Hero-background-image1' />
           <img src={background2}  className='Hero-background-image2' />
-        </div>
-        <div className='navbar'>
-          <ul className='navbar-list'>
-            <li className='navbar-list-item'><a href="#">Acasă</a></li>
-            <li className='navbar-list-item'><a href="#">Companie</a></li>
-            <li className='navbar-list-item'><a href="#">Produse & Servicii</a></li>
-            <li className='navbar-list-item'><a href="#">Galerie</a></li>
-            <li className='navbar-list-item'><a href="#">FAQ</a></li>
-            <li className='navbar-list-item'><a href="#">Contact</a></li>
-          </ul>
-        </div>
-        <div className="navbar-phone-number">
-          <img src={PhoneIcon} className="navbar-phone-icon" alt="Phone" />
-          <span className="navbar-phone-text">(+373) 686-26-333</span>
         </div>
         <div className='Hero-logo'>
           <div className='Hero-logo-bg'></div>
