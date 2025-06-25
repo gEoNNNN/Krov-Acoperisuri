@@ -22,12 +22,6 @@ import footerline from "./assets/Line 16 (1).png"
 import mobilefooter from "./assets/Group 71.jpg"//
 import LiveChat from "./LiveChat";
 import PhoneIcon from "./assets/material-symbols_call.png"
-import img1 from "./assets/img1.jpg"//
-import img2 from "./assets/img2.jpg"//
-import img3 from "./assets/img3.jpg"//
-import img4 from "./assets/img4.jpg"//
-import img5 from "./assets/img5.jpg"//
-import img6 from "./assets/img6.jpg"// 
 
 function App() {
   const faqData = [
@@ -121,7 +115,9 @@ function App() {
   }, []);
 
   // Galerie slider state
-  const galleryImages = [img1, img2, img3, img4, img5, img6];
+  const galleryImages = Object.values(
+    import.meta.glob('./assets/galerie/*.{jpg,jpeg,png,gif,webp}', { eager: true, as: 'url' })
+  ) as string[];
   const [galleryIndex, setGalleryIndex] = useState(0);
 
   const visibleImages = isMobile

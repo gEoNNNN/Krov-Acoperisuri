@@ -1290,13 +1290,16 @@ html, body {
   outline: none;
 }
 
-/* Smooth image transition */
 .gallery-slider-image {
   width: 25vw;
+  height: 20vw;
+  max-width: 90vw;
+  max-height: 60vw;
   object-fit: cover;
   border-radius: 16px;
   transition: opacity 0.5s cubic-bezier(.4,2,.6,1), transform 0.5s cubic-bezier(.4,2,.6,1);
   opacity: 1;
+  box-shadow: 0 2px 12px #0002;
 }
 
 .gallery-slider-image.hide {
@@ -1378,10 +1381,10 @@ html, body {
   .gallery-slider-image {
     width: 70vw;
     height: 55vw;
-    max-width: 80vw;
+    max-width: 90vw;
     max-height: 60vw;
-    border-radius: 12px;
     object-fit: cover;
+    border-radius: 12px;
   }
   .gallery-arrow {
     width: 12vw;
