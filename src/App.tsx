@@ -116,7 +116,7 @@ function App() {
 
   // Galerie slider state
   const galleryImages = Object.values(
-    import.meta.glob('./assets/galerie/*.{jpg,jpeg,png,gif,webp}', { eager: true, as: 'url' })
+    import.meta.glob('./assets/galerie/*.{jpg,jpeg,png,gif,webp}', { eager: true, query: '?url', import: 'default' })
   ) as string[];
   const [galleryIndex, setGalleryIndex] = useState(0);
 
