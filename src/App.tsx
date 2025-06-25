@@ -112,15 +112,25 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 630);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 630);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Galerie slider state
   const galleryImages = [img1, img2, img3, img4, img5, img6];
   const [galleryIndex, setGalleryIndex] = useState(0);
 
-  const visibleImages = [
-    galleryImages[galleryIndex % galleryImages.length],
-    galleryImages[(galleryIndex + 1) % galleryImages.length],
-    galleryImages[(galleryIndex + 2) % galleryImages.length],
-  ];
+  const visibleImages = isMobile
+    ? galleryImages.slice(0, 3)
+    : [
+        galleryImages[galleryIndex % galleryImages.length],
+        galleryImages[(galleryIndex + 1) % galleryImages.length],
+        galleryImages[(galleryIndex + 2) % galleryImages.length],
+      ];
 
   const [animating, setAnimating] = useState(false);
 
@@ -128,7 +138,9 @@ function App() {
     setAnimating(true);
     setTimeout(() => {
       setGalleryIndex((prev) =>
-        (prev - 3 + galleryImages.length) % galleryImages.length
+        isMobile
+          ? (prev - 1 + galleryImages.length) % galleryImages.length
+          : (prev - 3 + galleryImages.length) % galleryImages.length
       );
       setAnimating(false);
     }, 300);
@@ -138,7 +150,9 @@ function App() {
     setAnimating(true);
     setTimeout(() => {
       setGalleryIndex((prev) =>
-        (prev + 3) % galleryImages.length
+        isMobile
+          ? (prev + 1) % galleryImages.length
+          : (prev + 3) % galleryImages.length
       );
       setAnimating(false);
     }, 300);
