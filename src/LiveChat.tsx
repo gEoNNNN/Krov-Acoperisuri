@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./LiveChat.css";
-import ChatButtonBG from "./assets/Group 51.png";
-import openchaticon from "./assets/openchatbutton.png"
 import livechatopenbg from "./assets/Group 71.png"
 import closebutton from "./assets/closebutton.png"
 import sendicon from "./assets/sendicon.png"
+import chatboticon from "./assets/chaticon.png"
 
 type ChatMessage = {
   id: number;
@@ -44,25 +43,15 @@ const LiveChat: React.FC = () => {
   };
   return (
     <div>
-      <img
-        src={ChatButtonBG}
-        className="livechat-bg"
-        alt="Live Chat BG"
-        style={open ? { display: "none" } : undefined}
-      />
-      <div
-        className="live-chat-title-row"
-        style={open ? { display: "none" } : undefined}
-      >
-        <h1 className="live-chat-title">Krov Acoperișuri</h1>
-        <div
-          className="livechat-open-btn-bg"
+      {!open && (
+        <img
+          src={chatboticon}
+          className="livechat-chatboticon"
+          alt="Deschide chat"
           onClick={() => setOpen(true)}
-          title="Open Live Chat"
-        >
-          <img src={openchaticon} className="live-chat-open-button" />
-        </div>
-      </div>
+          style={{ position: "fixed", right: 40, bottom: 40, width: 80, height: 80, zIndex: 1001, cursor: "pointer" }}
+        />
+      )}
       {visible && (
         <div className={`livechat-modal${open ? "" : " closed"}`}>
           <img src={livechatopenbg} className="livechat-modal-bg" alt="Live Chat Modal BG" />

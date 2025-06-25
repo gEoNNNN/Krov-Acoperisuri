@@ -359,3 +359,28 @@
     align-self: flex-start;
   }
 }
+
+.livechat-chatboticon {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 80px;
+  height: 80px;
+  z-index: 1001;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  object-fit: contain;
+}
+
+.livechat-chatboticon:hover {
+  transform: scale(1.08) rotate(-8deg);
+}
+
+@media (max-width: 630px) {
+  .livechat-chatboticon {
+    right: 4vw;
+    bottom: 4vw;
+    width: 16vw;
+    height: 16vw;
+  }
+}

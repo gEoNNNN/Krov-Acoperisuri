@@ -92,6 +92,41 @@ function App() {
     }
   };
 
+  const [navbarCompressed, setNavbarCompressed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const homeSection = document.getElementById("home");
+      if (!homeSection) return;
+      const homeBottom = homeSection.offsetTop + homeSection.offsetHeight;
+      if (window.scrollY > homeBottom - 80) {
+        setNavbarCompressed(true);
+      } else {
+        setNavbarCompressed(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const galleryImages = [
+    mobilegallery, // sau orice imagine vrei
+    gallerryimage,
+    servicecard1, // exemplu, pune aici imaginile tale
+  ];
+  const [galleryIndex, setGalleryIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+
+  // Auto-slide pe mobil
+  useEffect(() => {
+    if (window.innerWidth >= 640) return;
+    const interval = setInterval(() => {
+      setGalleryIndex((prev) => (prev + 1) % galleryImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [galleryImages.length]);
+
   return (
     <>
       {/* Hamburger icon for mobile */}
@@ -116,7 +151,7 @@ function App() {
         )}
       </button>
       {/* Desktop Navbar */}
-      <div className='navbar'>
+      <div className={`navbar${navbarCompressed ? " navbar-compressed" : ""}`}>
         <ul className='navbar-list'>
           <li className='navbar-list-item'><a href="#home" onClick={e => handleNavClick(e, "home")}>Acasă</a></li>
           <li className='navbar-list-item'><a href="#about" onClick={e => handleNavClick(e, "about")}>Companie</a></li>
@@ -150,7 +185,7 @@ function App() {
           </ul>
         </div>
       )}
-      <div className="navbar-phone-number">
+      <div className={`navbar-phone-number${navbarCompressed ? " navbar-compressed" : ""}`}>
         <img src={PhoneIcon} className="navbar-phone-icon" alt="Phone" />
         <a
           className="navbar-phone-text"
@@ -188,7 +223,7 @@ function App() {
         </div>
         <div className='AboutUs'>
           <h1 className='AboutUs-title'>Cine <span className="bold-aboutus">Suntem Noi?</span></h1>
-          <h1 className='AboutUs-description-one'>Krov Acoperișuri este o companie fondată și condusă de Friiuc Andrian și Papuc Marcel, profesioniști dedicați în domeniul construcțiilor și sistemelor de acoperiș. Cu sediul juridic în Chișinău, str. Bogdan Voievod 10/1, și biroul nostru operațional pe stradela Studenților 2/4, oferim servicii complete și materiale de înaltă calitate pentru acoperișuri și garduri, pe întreg teritoriul Republicii Moldova.</h1>
+          <h1 className='AboutUs-description-one'><span className="bold-aboutus">Krov Acoperișuri</span> este o companie fondată de Friiuc Andrian și Papuc Marcel, profesioniști dedicați în domeniul construcțiilor și sistemelor de acoperiș. Cu sediul juridic în Chișinău, str. Bogdan Voievod 10/1, și biroul nostru operațional pe stradela Studenților 2/4, oferim servicii complete și materiale de înaltă calitate pentru acoperișuri și garduri, pe întreg teritoriul Republicii Moldova.</h1>
           <h1 className='AboutUs-description-two'>Activitatea noastră se concentrează pe:</h1>
           <ul className='AboutUs-description-three'>
             <li>construcția și reparația acoperișurilor,</li>
@@ -257,18 +292,18 @@ function App() {
               ))}
             </div>
           )}
-          <button className='Service-button'>Află mai mult</button>
+          <button
+            className='Service-button'
+            onClick={() => window.open('https://www.misiuneacasa.ro/invelitorile-de-ce-sunt-atat-de-greu-de-ales-partea-i-tigla-din-ceramica-arsa-tigla-metalica-tigla-din-beton-si-cartonul-asfaltat', '_blank')}
+          >
+            Află mai mult
+          </button>
         </div>
         <div className='Gallery' id="gallery">
           <h1 className='Gallery-title'>Galerie</h1>
           <img src={aboutusline} className='Gallery-line' />
           <h1 className='Gallery-description'>Descoperă proiectele noastre finalizate, realizate cu grijă, precizie și materiale de top.</h1>
           <img src={galleryline} className='Gallery-line-two' />
-          <div className='Gallery-list'>
-              <img src={mobilegallery} className="Gallery-mobile-image" />
-              <img src={gallerryimage} className='Gallery-list-image' />
-            <button className='Gallery-button'>Vezi mai mult</button>
-          </div>
         </div>
         <div className='FAQ' id="faq">
           <h1 className='FAQ-title'>FAQ's</h1>
@@ -314,18 +349,11 @@ function App() {
           <img src={footercard} className='Footer-bg'/>
           <img src={mobilefooter} className='Footer-mobile-bg'/>
           <h1 className='Footer-text'>Contactați-ne pentru Assistență</h1>
-          <button
-              className='Footer-button'
-              onClick={() => { window.location.href = 'tel:+37368626333'; }}
-            >
-              Sunați
-            </button>
           <ul className='Footer-socials'>
             <li className='Footer-socials-facebook'><a href="#"><img src={facebook} alt="" /></a></li>
             <li className='Footer-socials-instagram'><a href="#"><img src={instagram} alt="" /></a></li>
             <li className='Footer-socials-tiktok'><a href="#"><img src={tiktok} alt="" /></a></li>
           </ul>
-          <h1 className='Footer-links'>Linkuri</h1>
             <ul className='Footer-links-list'>
               <li><a href="#home" onClick={e => handleNavClick(e, "home")}>Acasa</a></li>
               <li><a href="#about" onClick={e => handleNavClick(e, "about")}>Companie</a></li>
@@ -334,7 +362,7 @@ function App() {
               <li><a href="#faq" onClick={e => handleNavClick(e, "faq")}>FAQ</a></li>
             </ul>
           <img src={footerline} className='Footer-line' />
-          <h1 className='Footer-Copyright'>Copyright © 2019 All rights reserved  by Krov Acoperișuri</h1>
+          <h1 className='Footer-Copyright'>Copyright © 2025 All rights reserved  by Krov Acoperișuri</h1>
       </div>
       <LiveChat />
     </>
