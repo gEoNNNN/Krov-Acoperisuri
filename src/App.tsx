@@ -144,6 +144,8 @@ function App() {
     }, 300);
   };
 
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <>
       {/* Hamburger icon for mobile */}
@@ -337,6 +339,8 @@ function App() {
                   src={src}
                   alt={`Galerie ${galleryIndex + idx + 1}`}
                   className={`gallery-slider-image${animating ? " hide" : ""}`}
+                  onClick={() => setSelectedImage(src)}
+                  style={{ cursor: "pointer" }}
                 />
               ))}
             </div>
@@ -348,6 +352,20 @@ function App() {
               &#8594;
             </button>
           </div>
+          {/* Lightbox modal */}
+          {selectedImage && (
+            <div className="gallery-lightbox" onClick={() => setSelectedImage(null)}>
+              <img
+                src={selectedImage}
+                alt="Imagine mărită"
+                className="gallery-lightbox-image"
+                onClick={e => e.stopPropagation()}
+              />
+              <button className="gallery-lightbox-close" onClick={() => setSelectedImage(null)} aria-label="Închide imaginea">
+                &times;
+              </button>
+            </div>
+          )}
         </div>
         <div className='FAQ' id="faq">
           <h1 className='FAQ-title'>FAQ's</h1>

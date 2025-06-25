@@ -1213,7 +1213,7 @@ html, body {
 }
 .navbar-compressed {
   padding: 0.5vw 1vw;
-  background: #2C5B7C;
+  background: c;
   box-shadow: 0 2px 12px 0 rgba(44, 91, 124, 0.18);
   border-radius: 2vw;
   top: 1vw;
@@ -1266,11 +1266,11 @@ html, body {
 }
 
 .gallery-arrow {
-  color: #2C5B7C;              /* Use your main blue or #111 for black */
-  background: transparent;      /* Remove background */
-  border: none;                 /* Remove border */
-  box-shadow: none;             /* Remove any shadow */
-  outline: none;                /* Remove outline */
+  color: #2C5B7C;            
+  background: transparent;      
+  border: none;                 
+  box-shadow: none;             
+  outline: none;             
   border-radius: 50%;
   width: 48px;
   height: 48px;
@@ -1297,11 +1297,62 @@ html, body {
   border-radius: 16px;
   transition: opacity 0.5s cubic-bezier(.4,2,.6,1), transform 0.5s cubic-bezier(.4,2,.6,1);
   opacity: 1;
-  /* Optional: add a slight scale effect */
 }
 
 .gallery-slider-image.hide {
   opacity: 0;
   transform: scale(0.98);
   pointer-events: none;
+}
+
+.gallery-lightbox {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInLightbox 0.2s;
+}
+
+@keyframes fadeInLightbox {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gallery-lightbox-image {
+  display: block;
+  max-width: 80vw;
+  max-height: 80vh;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  border-radius: 0;
+  margin: 0;
+  animation: zoomInLightbox 0.2s;
+  box-shadow: none;
+}
+
+@keyframes zoomInLightbox {
+  from { transform: scale(0.95); opacity: 0.7; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.gallery-lightbox-close {
+  position: fixed;
+  top: 3vw;
+  right: 4vw;
+  font-size: 3vw;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.gallery-lightbox-close:hover {
+  color: #2C5B7C;
 }
