@@ -1,33 +1,33 @@
 import './App.css';
 import background1 from './assets/Group 42.png';
-import background2 from './assets/Cojusna 7 1.png';
-import logo from "./assets/Logo Krov 1.png";
+import background2 from './assets/Cojusna 7 1.jpg';//
+import logo from "./assets/Logo Krov 1.jpg";//
 import heroline from "./assets/Line 3.png"
 import aboutusline from "./assets/Line 2.png"
-import aboutusimage from "./assets/IMG-057cfa42c102590805aac385f53cbbf4-V 1.png"
+import aboutusimage from "./assets/IMG-057cfa42c102590805aac385f53cbbf4-V 1.png"//
 import aboutusblueimage from "./assets/Group 43.png"
-import secrivesbg from "./assets/Group 55.png"
-import servicecard1 from "./assets/Rectangle 41.png"
-import servicecard2 from "./assets/Group 45.png"
-import servicecard3 from "./assets/image.png"
+import secrivesbg from "./assets/Group 69.jpg"//
+import servicecard1 from "./assets/Rectangle 41.jpg"//
+import servicecard2 from "./assets/Group 45.jpg"//
+import servicecard3 from "./assets/image.jpg"//
 import galleryline from "./assets/Line 4 (1).png"
 import FAQvector from "./assets/Vector 3.png"
 import plus from "./assets/+.png"
-import footercard from "./assets/Group 67.png"
+import footercard from "./assets/Group 67.jpg"//
 import { useState, useEffect } from "react";
 import facebook from "./assets/ic_baseline-facebook.png"
 import instagram from "./assets/mdi_instagram.png"
 import tiktok from "./assets/ic_baseline-tiktok.png"
 import footerline from "./assets/Line 16 (1).png"
-import mobilefooter from "./assets/mobilefooter.png"
+import mobilefooter from "./assets/Group 71.jpg"//
 import LiveChat from "./LiveChat";
 import PhoneIcon from "./assets/material-symbols_call.png"
-import img1 from "./assets/img1.png"
-import img2 from "./assets/img2.png"
-import img3 from "./assets/img3.png"
-import img4 from "./assets/img4.png"
-import img5 from "./assets/img5.png"
-import img6 from "./assets/img6.png"
+import img1 from "./assets/img1.jpg"//
+import img2 from "./assets/img2.jpg"//
+import img3 from "./assets/img3.jpg"//
+import img4 from "./assets/img4.jpg"//
+import img5 from "./assets/img5.jpg"//
+import img6 from "./assets/img6.jpg"// 
 
 function App() {
   const faqData = [
@@ -425,8 +425,24 @@ function App() {
                 <img src={facebook} alt="" />
               </a>
             </li>
-            <li className='Footer-socials-instagram'><a href="#"><img src={instagram} alt="" /></a></li>
-            <li className='Footer-socials-tiktok'><a href="#"><img src={tiktok} alt="" /></a></li>
+            <li className='Footer-socials-instagram'>
+              <a 
+                href="https://www.instagram.com/krovacoperisuri?igsh=MWZ0ZzJxdXQzZGhldg=="
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  <img src={instagram} alt="" />
+                </a>
+              </li>
+            <li className='Footer-socials-tiktok'>
+              <a 
+                href="https://www.tiktok.com/@krovacoperis?_t=ZM-8xVQfU4IAdx&_r=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                <img src={tiktok} alt="" />
+              </a>
+            </li>
           </ul>
             <ul className='Footer-links-list'>
               <li><a href="#home" onClick={e => handleNavClick(e, "home")}>Acasa</a></li>
