@@ -43,7 +43,7 @@ function App() {
     },
     {
       question: "Cum pot cere o ofertă?",
-      answer: "Ne puteți contacta telefonic sau prin formularul de pe site pentru o ofertă personalizată."
+      answer: "Ne puteți contacta telefonic sau prin intermediul retelelor de socializare pentru o ofertă personalizată."
     }
   ];
 
@@ -273,14 +273,17 @@ function App() {
               {
                 text: "Țiglă metalică",
                 img: servicecard1,
+                link: "https://www.elforum.info/topic/131146-acoperis-tigla-metalica/"
               },
               {
                 text: "Țiglă ceramică",
                 img: servicecard2,
+                link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/20812-alege-tigla"
               },
               {
                 text: "Streașini personalizate",
                 img: servicecard3,
+                link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/33360-streasina-terasa"
               },
             ].map((card, idx) => (
               <li
@@ -291,11 +294,15 @@ function App() {
                     ? { display: mobileCardIndex === idx ? "flex" : "none" }
                     : {}
                 }
+                onClick={() => window.open(card.link, "_blank")}
+                tabIndex={0}
+                role="button"
+                aria-label={card.text}
               >
                 <div className='Services-card-border'>
                   <h1 className='Services-card-text'>{card.text}</h1>
                 </div>
-                <img src={card.img} className='Services-card-image' />
+                <img src={card.img} className='Services-card-image' alt={card.text} />
               </li>
             ))}
           </ul>
