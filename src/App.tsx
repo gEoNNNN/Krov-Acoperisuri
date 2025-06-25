@@ -11,7 +11,6 @@ import servicecard1 from "./assets/Rectangle 41.png"
 import servicecard2 from "./assets/Group 45.png"
 import servicecard3 from "./assets/image.png"
 import galleryline from "./assets/Line 4 (1).png"
-import gallerryimage from "./assets/Group 68.png"
 import FAQvector from "./assets/Vector 3.png"
 import plus from "./assets/+.png"
 import footercard from "./assets/Group 67.png"
@@ -20,11 +19,15 @@ import facebook from "./assets/ic_baseline-facebook.png"
 import instagram from "./assets/mdi_instagram.png"
 import tiktok from "./assets/ic_baseline-tiktok.png"
 import footerline from "./assets/Line 16 (1).png"
-import mobilegallery from "./assets/mobilegallery.png"
 import mobilefooter from "./assets/mobilefooter.png"
 import LiveChat from "./LiveChat";
 import PhoneIcon from "./assets/material-symbols_call.png"
-
+import img1 from "./assets/img1.png"
+import img2 from "./assets/img2.png"
+import img3 from "./assets/img3.png"
+import img4 from "./assets/img4.png"
+import img5 from "./assets/img5.png"
+import img6 from "./assets/img6.png"
 
 function App() {
   const faqData = [
@@ -109,23 +112,37 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const galleryImages = [
-    mobilegallery, // sau orice imagine vrei
-    gallerryimage,
-    servicecard1, // exemplu, pune aici imaginile tale
-  ];
+  // Galerie slider state
+  const galleryImages = [img1, img2, img3, img4, img5, img6];
   const [galleryIndex, setGalleryIndex] = useState(0);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
 
-  // Auto-slide pe mobil
-  useEffect(() => {
-    if (window.innerWidth >= 640) return;
-    const interval = setInterval(() => {
-      setGalleryIndex((prev) => (prev + 1) % galleryImages.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [galleryImages.length]);
+  const visibleImages = [
+    galleryImages[galleryIndex % galleryImages.length],
+    galleryImages[(galleryIndex + 1) % galleryImages.length],
+    galleryImages[(galleryIndex + 2) % galleryImages.length],
+  ];
+
+  const [animating, setAnimating] = useState(false);
+
+  const handlePrev = () => {
+    setAnimating(true);
+    setTimeout(() => {
+      setGalleryIndex((prev) =>
+        (prev - 3 + galleryImages.length) % galleryImages.length
+      );
+      setAnimating(false);
+    }, 300);
+  };
+
+  const handleNext = () => {
+    setAnimating(true);
+    setTimeout(() => {
+      setGalleryIndex((prev) =>
+        (prev + 3) % galleryImages.length
+      );
+      setAnimating(false);
+    }, 300);
+  };
 
   return (
     <>
@@ -304,6 +321,33 @@ function App() {
           <img src={aboutusline} className='Gallery-line' />
           <h1 className='Gallery-description'>Descoperă proiectele noastre finalizate, realizate cu grijă, precizie și materiale de top.</h1>
           <img src={galleryline} className='Gallery-line-two' />
+          {/* Carousel cu 3 imagini */}
+          <div className="gallery-slider">
+            <button
+              className="gallery-arrow"
+              onClick={handlePrev}
+              aria-label="Imagini anterioare"
+            >
+              &#8592;
+            </button>
+            <div className="gallery-slider-images">
+              {visibleImages.map((src, idx) => (
+                <img
+                  key={idx}
+                  src={src}
+                  alt={`Galerie ${galleryIndex + idx + 1}`}
+                  className={`gallery-slider-image${animating ? " hide" : ""}`}
+                />
+              ))}
+            </div>
+            <button
+              className="gallery-arrow"
+              onClick={handleNext}
+              aria-label="Imagini următoare"
+            >
+              &#8594;
+            </button>
+          </div>
         </div>
         <div className='FAQ' id="faq">
           <h1 className='FAQ-title'>FAQ's</h1>

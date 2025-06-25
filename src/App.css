@@ -526,7 +526,7 @@ html, body {
 }
 
 .FAQ {
-  margin-top: 75vw;
+  margin-top: 15vw;
 }
 
 .FAQ-title {
@@ -1251,68 +1251,57 @@ html, body {
   display: none;
 }
 
-.Gallery-slider-mobile {
+.gallery-slider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2vw;
-  width: 100vw;
-  margin: 0 auto;
-  position: relative;
+  margin-top: 32px;
+  gap: 24px;
+  margin-left: -10vw;
 }
 
-.Gallery-mobile-images-row {
+.gallery-slider-images {
   display: flex;
-  gap: 2vw;
+  gap: 24px;
 }
 
-.Gallery-mobile-image {
-  width: 24vw;
-  height: 24vw;
-  object-fit: cover;
-  border-radius: 2vw;
-  box-shadow: 0 2px 12px #0003;
-  display: block;
-}
-
-.Gallery-arrow {
-  background: #2C5B7C;
-  color: #fff;
-  border: none;
-  font-size: 7vw;
+.gallery-arrow {
+  color: #2C5B7C;              /* Use your main blue or #111 for black */
+  background: transparent;      /* Remove background */
+  border: none;                 /* Remove border */
+  box-shadow: none;             /* Remove any shadow */
+  outline: none;                /* Remove outline */
   border-radius: 50%;
-  width: 10vw;
-  height: 10vw;
+  width: 48px;
+  height: 48px;
+  font-size: 2rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  opacity: 0.8;
-  transition: background 0.2s, opacity 0.2s;
-  z-index: 10;
-}
-.Gallery-arrow:hover {
-  background: #17405a;
-  opacity: 1;
+  transition: background 0.2s, color 0.2s;
+  padding: 0;
 }
 
-@media (max-width: 630px) {
-  .Gallery-slider-mobile {
-    width: 100vw;
-    margin: 0 auto 4vw auto;
-  }
-  .Gallery-mobile-image {
-    width: 80vw;
-    height: auto;
-    border-radius: 2vw;
-    box-shadow: 0 2px 12px #0003;
-    display: block;
-  }
+.gallery-arrow:active,
+.gallery-arrow:focus {
+  background: transparent;
+  box-shadow: none;
+  outline: none;
 }
-.Gallery-lightbox {
-  animation: fadeIn 0.2s;
+
+/* Smooth image transition */
+.gallery-slider-image {
+  width: 25vw;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: opacity 0.5s cubic-bezier(.4,2,.6,1), transform 0.5s cubic-bezier(.4,2,.6,1);
+  opacity: 1;
+  /* Optional: add a slight scale effect */
 }
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+
+.gallery-slider-image.hide {
+  opacity: 0;
+  transform: scale(0.98);
+  pointer-events: none;
 }
