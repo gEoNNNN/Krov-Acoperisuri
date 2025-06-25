@@ -1,15 +1,15 @@
 import './App.css';
 import background1 from './assets/Group 42.png';
-import background2 from './assets/Cojusna 7 1.jpg';//
-import logo from "./assets/Logo Krov 1.jpg";//
+import background2 from './assets/Cojusna 7 1.png';//
+import logo from "./assets/Logo Krov 1.svg";//
 import heroline from "./assets/Line 3.png"
 import aboutusline from "./assets/Line 2.png"
 import aboutusimage from "./assets/IMG-057cfa42c102590805aac385f53cbbf4-V 1.png"//
 import aboutusblueimage from "./assets/Group 43.png"
 import secrivesbg from "./assets/Group 69.jpg"//
-import servicecard1 from "./assets/Rectangle 41.jpg"//
-import servicecard2 from "./assets/Group 45.jpg"//
-import servicecard3 from "./assets/image.jpg"//
+import servicecard1 from "./assets/Rectangle 41 1.jpg"//
+import servicecard2 from "./assets/Group 45 1.jpg"//
+import servicecard3 from "./assets/image 1.jpg"//
 import galleryline from "./assets/Line 4 (1).png"
 import FAQvector from "./assets/Vector 3.png"
 import plus from "./assets/+.png"
