@@ -132,30 +132,20 @@ function App() {
         galleryImages[(galleryIndex + 2) % galleryImages.length],
       ];
 
-  const [animating, setAnimating] = useState(false);
-
   const handlePrev = () => {
-    setAnimating(true);
-    setTimeout(() => {
-      setGalleryIndex((prev) =>
-        isMobile
-          ? (prev - 1 + galleryImages.length) % galleryImages.length
-          : (prev - 3 + galleryImages.length) % galleryImages.length
-      );
-      setAnimating(false);
-    }, 300);
+    setGalleryIndex((prev) =>
+      isMobile
+        ? (prev - 1 + galleryImages.length) % galleryImages.length
+        : (prev - 3 + galleryImages.length) % galleryImages.length
+    );
   };
 
   const handleNext = () => {
-    setAnimating(true);
-    setTimeout(() => {
-      setGalleryIndex((prev) =>
-        isMobile
-          ? (prev + 1) % galleryImages.length
-          : (prev + 3) % galleryImages.length
-      );
-      setAnimating(false);
-    }, 300);
+    setGalleryIndex((prev) =>
+      isMobile
+        ? (prev + 1) % galleryImages.length
+        : (prev + 3) % galleryImages.length
+    );
   };
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -194,7 +184,7 @@ function App() {
           <li className='navbar-list-item'><a href="#contact" onClick={e => handleNavClick(e, "contact")}>Contact</a></li>
         </ul>
       </div>
-      {/* Mobile Navbar Overlay */}
+  
       {mobileMenuOpen && (
         <div className="mobile-navbar-overlay">
           <button
@@ -426,7 +416,15 @@ function App() {
           <img src={mobilefooter} className='Footer-mobile-bg'/>
           <h1 className='Footer-text'>Contactați-ne pentru Assistență</h1>
           <ul className='Footer-socials'>
-            <li className='Footer-socials-facebook'><a href="#"><img src={facebook} alt="" /></a></li>
+            <li className='Footer-socials-facebook'>
+              <a
+                href="https://www.facebook.com/p/Krov-Acoperi%C8%99uri-100083426166733/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={facebook} alt="" />
+              </a>
+            </li>
             <li className='Footer-socials-instagram'><a href="#"><img src={instagram} alt="" /></a></li>
             <li className='Footer-socials-tiktok'><a href="#"><img src={tiktok} alt="" /></a></li>
           </ul>
@@ -437,7 +435,7 @@ function App() {
               <li><a href="#gallery" onClick={e => handleNavClick(e, "gallery")}>Galerie</a></li>
               <li><a href="#faq" onClick={e => handleNavClick(e, "faq")}>FAQ</a></li>
             </ul>
-          <img src={footerline} className='Footer-line' />
+          <img src={footerline} className='Footer-line'/>
           <h1 className='Footer-Copyright'>Copyright © 2025 All rights reserved  by Krov Acoperișuri</h1>
       </div>
       <LiveChat />
