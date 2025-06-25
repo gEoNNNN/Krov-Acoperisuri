@@ -79,7 +79,7 @@ function App() {
   // Close menu on resize if not mobile
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 630) setMobileMenuOpen(false);
+      if (window.innerWidth >= 930) setMobileMenuOpen(false);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -112,10 +112,10 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 630);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 930);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 630);
+    const handleResize = () => setIsMobile(window.innerWidth < 930);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -125,7 +125,7 @@ function App() {
   const [galleryIndex, setGalleryIndex] = useState(0);
 
   const visibleImages = isMobile
-    ? galleryImages.slice(0, 3)
+    ? [galleryImages[galleryIndex % galleryImages.length]]
     : [
         galleryImages[galleryIndex % galleryImages.length],
         galleryImages[(galleryIndex + 1) % galleryImages.length],
@@ -337,12 +337,12 @@ function App() {
           <img src={aboutusline} className='Gallery-line' />
           <h1 className='Gallery-description'>Descoperă proiectele noastre finalizate, realizate cu grijă, precizie și materiale de top.</h1>
           <img src={galleryline} className='Gallery-line-two' />
-          {/* Carousel cu 3 imagini */}
+          {/* Carousel cu imagini */}
           <div className="gallery-slider">
             <button
               className="gallery-arrow"
               onClick={handlePrev}
-              aria-label="Imagini anterioare"
+              aria-label="Imagine anterioară"
             >
               &#8592;
             </button>
@@ -352,7 +352,7 @@ function App() {
                   key={idx}
                   src={src}
                   alt={`Galerie ${galleryIndex + idx + 1}`}
-                  className={`gallery-slider-image${animating ? " hide" : ""}`}
+                  className="gallery-slider-image"
                   onClick={() => setSelectedImage(src)}
                   style={{ cursor: "pointer" }}
                 />
@@ -361,7 +361,7 @@ function App() {
             <button
               className="gallery-arrow"
               onClick={handleNext}
-              aria-label="Imagini următoare"
+              aria-label="Imagine următoare"
             >
               &#8594;
             </button>
