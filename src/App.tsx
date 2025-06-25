@@ -31,7 +31,7 @@ function App() {
     },
     {
       question: "Ce garanție oferiți pentru lucrări?",
-      answer: "Oferim garanție de până la 10 ani pentru lucrările executate."
+      answer: "Oferim garanție de până la 3 ani pentru lucrările executate."
     },
     {
       question: "Pot cumpăra doar materialele fără montaj?",
