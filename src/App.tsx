@@ -89,6 +89,7 @@ function App() {
     }
   ];
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 930);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (idx: number) => {
@@ -100,11 +101,15 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setMobileCardIndex((prev) => (prev + 3) % services.length);
-    }, 5000); 
+      setMobileCardIndex((prev) => 
+        isMobile 
+          ? (prev + 1) % services.length   // Mobile: advance by 1
+          : (prev + 3) % services.length   // Desktop: advance by 3
+      );
+    }, 3000); // Changed to 3 seconds as you requested
 
     return () => clearInterval(interval);
-  }, [services.length]);
+  }, [services.length, isMobile]); // Added isMobile dependency
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -144,7 +149,6 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 930);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 930);
@@ -322,20 +326,21 @@ function App() {
   <div className='Services-slider'>
     <button
       className="services-arrow-left"
-      onClick={() => setMobileCardIndex((prev) => (prev - 3 + services.length) % services.length)} 
+      onClick={() => setMobileCardIndex((prev) => 
+        isMobile 
+          ? (prev - 1 + services.length) % services.length  // Mobile: go back 1
+          : (prev - 3 + services.length) % services.length  // Desktop: go back 3
+      )} 
       aria-label="Serviciu anterior"
     >
       &#8592;
     </button>
     <ul className='Services-list'>
       {isMobile
-        ? [0, 1, 2].map((offset) => {
-          const idx = (mobileCardIndex + offset) % services.length;
-          const card = services[idx];
-          return (
+        ? [services[mobileCardIndex % services.length]].map((card, idx) => (
             <li
               className='Services-card'
-              key={`${card.text}-${idx}`} 
+              key={`${card.text}-mobile-${mobileCardIndex}`} 
               onClick={() => window.open(card.link, "_blank")}
               tabIndex={0}
               role="button"
@@ -346,31 +351,34 @@ function App() {
               </div>
               <img src={card.img} className='Services-card-image' alt={card.text} />
             </li>
-          );
-        })
-      : [0, 1, 2].map((offset) => {
-          const idx = (mobileCardIndex + offset) % services.length;
-          const card = services[idx];
-          return (
-            <li
-              className='Services-card'
-              key={card.text}
-              onClick={() => window.open(card.link, "_blank")}
-              tabIndex={0}
-              role="button"
-              aria-label={card.text}
-            >
-              <div className='Services-card-border'>
-                <h1 className='Services-card-text'>{card.text}</h1>
-              </div>
-              <img src={card.img} className='Services-card-image' alt={card.text} />
-            </li>
-          );
-        })}
+          ))
+        : [0, 1, 2].map((offset) => {
+            const idx = (mobileCardIndex + offset) % services.length;
+            const card = services[idx];
+            return (
+              <li
+                className='Services-card'
+                key={card.text}
+                onClick={() => window.open(card.link, "_blank")}
+                tabIndex={0}
+                role="button"
+                aria-label={card.text}
+              >
+                <div className='Services-card-border'>
+                  <h1 className='Services-card-text'>{card.text}</h1>
+                </div>
+                <img src={card.img} className='Services-card-image' alt={card.text} />
+              </li>
+            );
+          })}
     </ul>
     <button
       className="services-arrow-right"
-      onClick={() => setMobileCardIndex((prev) => (prev + 3) % services.length)} 
+      onClick={() => setMobileCardIndex((prev) => 
+        isMobile 
+          ? (prev + 1) % services.length  // Mobile: go forward 1
+          : (prev + 3) % services.length  // Desktop: go forward 3
+      )} 
       aria-label="Serviciu următor"
     >
       &#8594;
@@ -473,7 +481,7 @@ function App() {
           <ul className='Footer-socials'>
             <li className='Footer-socials-facebook'>
               <a
-                href="https://www.facebook.com/p/Krov-Acoperi%C8%99uri-100083426166733/"
+                href="https://www.facebook.com/p/Krov-Acoperisuri-100083426166733/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
