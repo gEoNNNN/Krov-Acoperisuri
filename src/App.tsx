@@ -337,7 +337,7 @@ function App() {
     </button>
     <ul className='Services-list'>
       {isMobile
-        ? [services[mobileCardIndex % services.length]].map((card, idx) => (
+        ? [services[mobileCardIndex % services.length]].map((card) => (
             <li
               className='Services-card'
               key={`${card.text}-mobile-${mobileCardIndex}`} 
