@@ -98,17 +98,14 @@ function App() {
   // Add this state for mobile card index
   const [mobileCardIndex, setMobileCardIndex] = useState(0);
 
-  // Cycle cards every 5 seconds on mobile
+  // Cycle cards every 5 seconds on both mobile and desktop
   useEffect(() => {
-    const isMobile = window.innerWidth < 640;
-    if (!isMobile) return;
-
     const interval = setInterval(() => {
-      setMobileCardIndex((prev) => (prev + 1) % 3); // 3 cards
+      setMobileCardIndex((prev) => (prev + 3) % services.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [services.length]);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -326,14 +323,36 @@ function App() {
   <div className='Services-slider'>
     <button
       className="services-arrow-left"
-      onClick={() => setMobileCardIndex((prev) => (prev - 1 + services.length) % services.length)}
+      onClick={() => setMobileCardIndex((prev) => (prev - 3 + services.length) % services.length)} // Change by 3
       aria-label="Serviciu anterior"
     >
       &#8592;
     </button>
     <ul className='Services-list'>
       {isMobile
-        ? [services[mobileCardIndex]].map((card) => (
+        ? [0, 1, 2].map((offset) => {
+          const idx = (mobileCardIndex + offset) % services.length;
+          const card = services[idx];
+          return (
+            <li
+              className='Services-card'
+              key={`${card.text}-${idx}`} // Add unique key with index
+              onClick={() => window.open(card.link, "_blank")}
+              tabIndex={0}
+              role="button"
+              aria-label={card.text}
+            >
+              <div className='Services-card-border'>
+                <h1 className='Services-card-text'>{card.text}</h1>
+              </div>
+              <img src={card.img} className='Services-card-image' alt={card.text} />
+            </li>
+          );
+        })
+      : [0, 1, 2].map((offset) => {
+          const idx = (mobileCardIndex + offset) % services.length;
+          const card = services[idx];
+          return (
             <li
               className='Services-card'
               key={card.text}
@@ -347,30 +366,12 @@ function App() {
               </div>
               <img src={card.img} className='Services-card-image' alt={card.text} />
             </li>
-          ))
-        : [0, 1, 2].map((offset) => {
-            const idx = (mobileCardIndex + offset) % services.length;
-            const card = services[idx];
-            return (
-              <li
-                className='Services-card'
-                key={card.text}
-                onClick={() => window.open(card.link, "_blank")}
-                tabIndex={0}
-                role="button"
-                aria-label={card.text}
-              >
-                <div className='Services-card-border'>
-                  <h1 className='Services-card-text'>{card.text}</h1>
-                </div>
-                <img src={card.img} className='Services-card-image' alt={card.text} />
-              </li>
-            );
-          })}
+          );
+        })}
     </ul>
     <button
       className="services-arrow-right"
-      onClick={() => setMobileCardIndex((prev) => (prev + 1) % services.length)}
+      onClick={() => setMobileCardIndex((prev) => (prev + 3) % services.length)} // Change by 3
       aria-label="Serviciu următor"
     >
       &#8594;

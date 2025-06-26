@@ -412,6 +412,18 @@ html, body {
   margin-left: 3vw;
 }
 
+.services-arrow-left:hover,
+.services-arrow-right:hover,
+.services-arrow-left:focus,
+.services-arrow-right:focus,
+.services-arrow-left:active,
+.services-arrow-right:active {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
 .services-arrow-right {
   background: transparent;
   position: absolute;
