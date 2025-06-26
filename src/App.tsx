@@ -95,21 +95,20 @@ function App() {
     setOpenIndex(openIndex === idx ? null : idx);
   };
 
-  // Add this state for mobile card index
+  
   const [mobileCardIndex, setMobileCardIndex] = useState(0);
 
-  // Cycle cards every 5 seconds on both mobile and desktop
   useEffect(() => {
     const interval = setInterval(() => {
       setMobileCardIndex((prev) => (prev + 3) % services.length);
-    }, 5000);
+    }, 5000); 
 
     return () => clearInterval(interval);
   }, [services.length]);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Close menu on resize if not mobile
+  
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 930) setMobileMenuOpen(false);
@@ -118,7 +117,7 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Smooth scroll for navbar links
+  
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
@@ -323,7 +322,7 @@ function App() {
   <div className='Services-slider'>
     <button
       className="services-arrow-left"
-      onClick={() => setMobileCardIndex((prev) => (prev - 3 + services.length) % services.length)} // Change by 3
+      onClick={() => setMobileCardIndex((prev) => (prev - 3 + services.length) % services.length)} 
       aria-label="Serviciu anterior"
     >
       &#8592;
@@ -336,7 +335,7 @@ function App() {
           return (
             <li
               className='Services-card'
-              key={`${card.text}-${idx}`} // Add unique key with index
+              key={`${card.text}-${idx}`} 
               onClick={() => window.open(card.link, "_blank")}
               tabIndex={0}
               role="button"
@@ -371,7 +370,7 @@ function App() {
     </ul>
     <button
       className="services-arrow-right"
-      onClick={() => setMobileCardIndex((prev) => (prev + 3) % services.length)} // Change by 3
+      onClick={() => setMobileCardIndex((prev) => (prev + 3) % services.length)} 
       aria-label="Serviciu următor"
     >
       &#8594;

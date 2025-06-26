@@ -485,16 +485,30 @@ html, body {
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 1;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .Services-card:hover {
-  transform: scale(1.035);
-  z-index: 2;
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(44, 91, 124, 0.15);
 }
+
 .Services-card:hover .Services-card-border {
   border-color: #2C5B7C;
-  transition: border-color 0.25s;
+  transition: border-color 0.3s ease;
 }
 
 .Services-card-text {
@@ -504,18 +518,27 @@ html, body {
   font-weight: 700;
   text-align: center;
   margin-top: 5vw;
+  opacity: 1;
+  transition: color 0.3s ease;
 }
 
 .Services-card-border {
- border: 5px solid #A0A6AB;
- width: 16vw;
- height: 10vw;
+  border: 5px solid #A0A6AB;
+  width: 16vw;
+  height: 10vw;
+  transition: border-color 0.3s ease;
 }
 
 .Services-card-image {
   width: 21vw;
   position: absolute;
   bottom: 8vw;
+  opacity: 1;
+  transition: transform 0.3s ease;
+}
+
+.Services-card:hover .Services-card-image {
+  transform: scale(1.05);
 }
 
 .Service-button {
@@ -983,6 +1006,7 @@ html, body {
   .Services-card {
     width: 60vw;
     min-height: 30vw;
+    animation: fadeInUp 0.6s ease-out;
   }
 
   .Services-card-border {
