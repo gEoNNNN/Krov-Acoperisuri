@@ -448,11 +448,6 @@ html, body {
     right: 10vw;
     top: 80%;
   }
-  .navbar-list-item {
-  display: inline;
-  font-size: 0.1vw;
-}
-  
 }
 
 .Services-list {
@@ -1100,13 +1095,15 @@ html, body {
     margin-top: 25vw;
     margin-left: 3vw;
   }
-  .Footer-links {
-    font-size: 5vw;
-    margin-top: 18vw;
-    margin-left: 5vw;
+  .Footer-links-list {
+    font-size: 2vw;
+    position: relative;
+    top: 1vw;
+    margin-left: 15vw;
+    margin-top: 10vw;
   }
   .Footer-links-list li a {
-    font-size: 4vw;
+    font-size: 2vw;
   }
   .Footer-Copyright {
     font-size: 3vw;
@@ -1478,6 +1475,12 @@ html, body {
   }
 
   .FAQ {
-  margin-top: 1vw;
+    margin-top: 1vw;
+  }
 }
+
+@media (max-width: 630px) {
+  .Footer-links-list{
+    font-size: 1vw;
+  }
 }

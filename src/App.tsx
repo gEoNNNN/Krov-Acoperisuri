@@ -22,7 +22,7 @@ import footerline from "./assets/Line 16 (1).png"
 import mobilefooter from "./assets/Group 71.jpg"//
 import LiveChat from "./LiveChat";
 import PhoneIcon from "./assets/material-symbols_call.png"
-import decking from "./assets/imagesdeck.jpeg"
+import decking from "./assets/decking.webp"
 import sindrila from "./assets/sindrila.webp"
 import fixare from "./assets/suruburi, piulite si cuie.jpg"
 import lemn from "./assets/IMG-56c6529f6aeb21cf20480b7d941c1e24-V.jpg"
@@ -45,7 +45,7 @@ function App() {
                   link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/33360-streasina-terasa"
                 },
                 {
-                  text: "Decking acoperișuri",
+                  text: "Decking",
                   img: decking,
                   link: "https://www.hidroset.ro/blog/avantaje-si-dezavantaje-la-un-deck-pe-terasa/"
                 },
