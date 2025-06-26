@@ -22,8 +22,50 @@ import footerline from "./assets/Line 16 (1).png"
 import mobilefooter from "./assets/Group 71.jpg"//
 import LiveChat from "./LiveChat";
 import PhoneIcon from "./assets/material-symbols_call.png"
+import decking from "./assets/imagesdeck.jpeg"
+import sindrila from "./assets/sindrila.webp"
+import fixare from "./assets/suruburi, piulite si cuie.jpg"
+import lemn from "./assets/IMG-56c6529f6aeb21cf20480b7d941c1e24-V.jpg"
 
 function App() {
+  const services = [
+                {
+                  text: "Țiglă metalică",
+                  img: servicecard1,
+                  link: "https://www.elforum.info/topic/131146-acoperis-tigla-metalica/"
+                },
+                {
+                  text: "Țiglă ceramică",
+                  img: servicecard2,
+                  link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/20812-alege-tigla"
+                },
+                {
+                  text: "Streașini personalizate",
+                  img: servicecard3,
+                  link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/33360-streasina-terasa"
+                },
+                {
+                  text: "Decking acoperișuri",
+                  img: decking,
+                  link: "https://www.hidroset.ro/blog/avantaje-si-dezavantaje-la-un-deck-pe-terasa/"
+                },
+                {
+                  text: "Șindrilă bituminoasă",
+                  img: sindrila,
+                  link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/15957-sindrila-bituminoasa"
+                },
+                {
+                  text: "Lemn pentru acoperiș",
+                  img: lemn,
+                  link: "https://forum.softpedia.com/topic/1195086-lemnul-pentru-acoperis-la-o-casa-noua/"
+                },
+                {
+                  text: "Sisteme de fixare",
+                  img: fixare,
+                  link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/34343-gaura-surub-acoperis-tabla"
+                },
+              ];
+
   const faqData = [
     {
       question: "Oferiți consultanță gratuită?",
@@ -278,35 +320,41 @@ function App() {
           </button>
         </div>
         <div className='Services' id="services">
-          <img src={secrivesbg} className='Services-bg' />
-          <h1 className='Services-company'>Krov Acoperișuri</h1>
-          <h1 className='Services-title'><span className="bold-aboutus">Produse </span> & Servicii</h1>
-          <ul className='Services-list'>
-            {[
-              {
-                text: "Țiglă metalică",
-                img: servicecard1,
-                link: "https://www.elforum.info/topic/131146-acoperis-tigla-metalica/"
-              },
-              {
-                text: "Țiglă ceramică",
-                img: servicecard2,
-                link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/20812-alege-tigla"
-              },
-              {
-                text: "Streașini personalizate",
-                img: servicecard3,
-                link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/33360-streasina-terasa"
-              },
-            ].map((card, idx) => (
+  <img src={secrivesbg} className='Services-bg' />
+  <h1 className='Services-company'>Krov Acoperișuri</h1>
+  <h1 className='Services-title'><span className="bold-aboutus">Produse </span> & Servicii</h1>
+  <div className='Services-slider'>
+    <button
+      className="services-arrow-left"
+      onClick={() => setMobileCardIndex((prev) => (prev - 1 + services.length) % services.length)}
+      aria-label="Serviciu anterior"
+    >
+      &#8592;
+    </button>
+    <ul className='Services-list'>
+      {isMobile
+        ? [services[mobileCardIndex]].map((card) => (
+            <li
+              className='Services-card'
+              key={card.text}
+              onClick={() => window.open(card.link, "_blank")}
+              tabIndex={0}
+              role="button"
+              aria-label={card.text}
+            >
+              <div className='Services-card-border'>
+                <h1 className='Services-card-text'>{card.text}</h1>
+              </div>
+              <img src={card.img} className='Services-card-image' alt={card.text} />
+            </li>
+          ))
+        : [0, 1, 2].map((offset) => {
+            const idx = (mobileCardIndex + offset) % services.length;
+            const card = services[idx];
+            return (
               <li
                 className='Services-card'
                 key={card.text}
-                style={
-                  window.innerWidth < 640
-                    ? { display: mobileCardIndex === idx ? "flex" : "none" }
-                    : {}
-                }
                 onClick={() => window.open(card.link, "_blank")}
                 tabIndex={0}
                 role="button"
@@ -317,21 +365,18 @@ function App() {
                 </div>
                 <img src={card.img} className='Services-card-image' alt={card.text} />
               </li>
-            ))}
-          </ul>
-          {/* Dots */}
-          {window.innerWidth < 640 && (
-            <div className="Services-dots">
-              {[0, 1, 2].map((idx) => (
-                <span
-                  key={idx}
-                  className={`Services-dot${mobileCardIndex === idx ? " active" : ""}`}
-                  onClick={() => setMobileCardIndex(idx)}
-                />
-              ))}
-            </div>
-          )}
-        </div>
+            );
+          })}
+    </ul>
+    <button
+      className="services-arrow-right"
+      onClick={() => setMobileCardIndex((prev) => (prev + 1) % services.length)}
+      aria-label="Serviciu următor"
+    >
+      &#8594;
+    </button>
+  </div>
+</div>
         <div className='Gallery' id="gallery">
           <h1 className='Gallery-title'>Galerie</h1>
           <img src={aboutusline} className='Gallery-line' />
