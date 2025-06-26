@@ -305,14 +305,33 @@ html, body {
 }
 
 .AboutUs-description-three li {
-  transition: transform 0.25s cubic-bezier(.4,2,.6,1);
+  transition: transform 0.3s ease-in-out, background 0.3s ease;
   cursor: pointer;
+  animation: attractiveGlow 2.5s ease-in-out infinite;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 8px 0;
+  position: relative;
+}
+
+@keyframes attractiveGlow {
+  0% {
+    transform: scale(1);
+    background: transparent;
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+    background: transparent;
+  }
 }
 
 .AboutUs-description-three li:hover {
   transform: scale(1.08);
+  animation-play-state: paused;
 }
-
 .italic-text {
   font-style: italic;
 }
@@ -1154,7 +1173,7 @@ html, body {
   }
   .Footer-socials {
     margin-top: 25vw;
-    margin-left: 25vw;
+    margin-left: 14vw;
   }
 }
 
