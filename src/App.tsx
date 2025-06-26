@@ -43,7 +43,7 @@ function App() {
     },
     {
       question: "Cum pot cere o ofertă?",
-      answer: "Ne puteți contacta telefonic sau prin intermediul retelelor de socializare pentru o ofertă personalizată."
+      answer: "Ne puteti contacta telefonic la numarul indicat pe site sau sa ne scrieti  prin chatbotul companiei."
     }
   ];
 
@@ -242,13 +242,26 @@ function App() {
         </div>
         <div className='AboutUs'>
           <h1 className='AboutUs-title'>Cine <span className="bold-aboutus">Suntem Noi?</span></h1>
-          <h1 className='AboutUs-description-one'><span className="bold-aboutus">Krov Acoperișuri</span> este o companie fondată de Friiuc Andrian și Papuc Marcel, profesioniști dedicați în domeniul construcțiilor și sistemelor de acoperiș. Cu sediul juridic în Chișinău, str. Bogdan Voievod 10/1, și biroul nostru operațional pe stradela Studenților 2/4, oferim servicii complete și materiale de înaltă calitate pentru acoperișuri și garduri, pe întreg teritoriul Republicii Moldova.</h1>
-          <h1 className='AboutUs-description-two'>Activitatea noastră se concentrează pe:</h1>
+          <h1 className='AboutUs-description-one'>
+              <span className="bold-aboutus">Krov Acoperișuri</span>
+              este o companie de referință în domeniul construcțiilor de acoperișuri și sisteme de drenaj, fondată de profesioniștii <span className="italic-text">Andrian Friiuc</span> și <span className="italic-text">Marcel Papuc</span>.<br />
+              Compania noastra asigura clienților din întreaga Republică Moldova servicii complete și materiale de înaltă calitate pentru acoperișuri și garduri.
+            </h1>
+          <h1 className='AboutUs-description-two'><span className="bold-aboutus">Domeniile noastre de expertiză</span></h1>
           <ul className='AboutUs-description-three'>
-            <li>construcția și reparația acoperișurilor,</li>
-            <li>instalarea sistemelor de streașină și scurgere,</li>
-            <li>precum și comercializarea materialelor aferente.</li>
+            <li>Construcția și reparația acoperișurilor, adaptate oricărui tip de clădire </li>
+            <li>Instalarea sistemelor de streașină și scurgere, pentru durabilitate și protecție optimă</li>
+            <li>Comercializarea materialelor aferente (tablă, țiglă metalică, jgheaburi, burlane etc.), selectate după cele mai riguroase standarde de calitate</li>
           </ul>
+          <h1 className='AboutUs-description-four'>
+              Echipa noastră combină experiența solidă în construcții cu o abordare
+              modernă, pentru a livra soluții personalizate, eficiente și durabile. Indiferent de
+              complexitatea proiectului, ne angajăm să respectăm termenele convenite și
+              să oferim suport tehnic de la consultanță și proiectare, până la execuție și
+              mentenanță.<br />
+              Sediul juridic este la Chișinău, str. Bogdan Voievod nr. 10/1, și biroul
+              operațional pe str. Studenților nr. 2/4.
+            </h1>
           <img src={aboutusline} className='AboutUS-line'  id="about"/>
           <img src={aboutusimage} className="AboutUS-image" />
           <img src={aboutusblueimage} className="AboutUS-image-blue" />
@@ -318,12 +331,6 @@ function App() {
               ))}
             </div>
           )}
-          <button
-            className='Service-button'
-            onClick={() => window.open('https://www.misiuneacasa.ro/invelitorile-de-ce-sunt-atat-de-greu-de-ales-partea-i-tigla-din-ceramica-arsa-tigla-metalica-tigla-din-beton-si-cartonul-asfaltat', '_blank')}
-          >
-            Află mai mult
-          </button>
         </div>
         <div className='Gallery' id="gallery">
           <h1 className='Gallery-title'>Galerie</h1>

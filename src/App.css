@@ -296,12 +296,25 @@ html, body {
   font-weight: 700;
 }
 
-.AboutUs-description-one, .AboutUs-description-two, .AboutUs-description-three {
+.AboutUs-description-one, .AboutUs-description-two, .AboutUs-description-three,.AboutUs-description-four {
   font-family: "Montserrat", sans-serif;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   color: #2C2C2C;
-  width: 35vw;
+  width: 40vw;
   font-weight: 500;
+}
+
+.AboutUs-description-three li {
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1);
+  cursor: pointer;
+}
+
+.AboutUs-description-three li:hover {
+  transform: scale(1.08);
+}
+
+.italic-text {
+  font-style: italic;
 }
 
 .AboutUS-line {
