@@ -1,6 +1,6 @@
 import './App.css';
 import background1 from './assets/Group 42.png';
-import background2 from './assets/Cojusna 7 1.png';//
+import background2 from './assets/Poza hero.svg';//
 import logo from "./assets/Logo Krov 1.svg";//
 import heroline from "./assets/Line 3.png"
 import aboutusline from "./assets/Line 2.png"
@@ -106,7 +106,7 @@ function App() {
           ? (prev + 1) % services.length   // Mobile: advance by 1
           : (prev + 3) % services.length   // Desktop: advance by 3
       );
-    }, 3000); // Changed to 3 seconds as you requested
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [services.length, isMobile]); // Added isMobile dependency

@@ -32,9 +32,9 @@ html, body {
 
 .Hero-background-image2 {
   position: absolute;
-  width: 99vw;
+  width: 84vw;
   top: 1vw;
-  left: -1vw;
+  left: 13vw;
   object-fit: cover;
   z-index: 0;
   pointer-events: none;
