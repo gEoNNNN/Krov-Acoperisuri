@@ -1,5 +1,5 @@
 from openai import OpenAI
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from openpyxl import Workbook, load_workbook
 from datetime import datetime
@@ -23,7 +23,7 @@ import requests
 import urllib.parse
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="frontend")
 CORS(app)
 
 load_dotenv()
@@ -2990,7 +2990,14 @@ def ask_with_ai(messages , temperature = 0.9 , max_tokens = 100):
 
 
 
-
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, "index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True, use_reloader=False)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port,debug=True, use_reloader=False)

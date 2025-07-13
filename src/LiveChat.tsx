@@ -29,7 +29,7 @@ const LiveChat: React.FC = () => {
   const [userName, setUserName] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
-  const [userInterests, setUserInterests] = useState("");
+  const [, setUserInterests] = useState("");
 
 
   // Scroll la ultimul mesaj
@@ -46,7 +46,7 @@ const LiveChat: React.FC = () => {
       setVisible(true);
       if (messages.length === 0 && onboardingStep === 0) {
         setLoading(true);
-        fetch("http://127.0.0.1:5000/language")
+        fetch("https://krov-acoperisuri.onrender.com/language")
           .then((res) => res.json())
           .then((data) => {
             const botMsg: ChatMessage = {
@@ -87,6 +87,7 @@ const LiveChat: React.FC = () => {
 
     if (onboardingStep === -1) {
       setUserName(message);
+
       console.log("messages = " , message)
       setIsTyping(true);
 
@@ -98,7 +99,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
 
 
-      fetch("http://127.0.0.1:5000/start", {
+      fetch("https://krov-acoperisuri.onrender.com/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: message })
@@ -129,7 +130,7 @@ const LiveChat: React.FC = () => {
     
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/interests", {
+      fetch("https://krov-acoperisuri.onrender.com/interests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: message, language: window.language })
@@ -182,7 +183,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
 
     
-      fetch("http://127.0.0.1:5000/welcome", {
+      fetch("https://krov-acoperisuri.onrender.com/welcome", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: userName, interests: message, language: window.language })
@@ -231,7 +232,7 @@ const LiveChat: React.FC = () => {
       setUserInterests(message);
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/chat", {
+      fetch("https://krov-acoperisuri.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -276,7 +277,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/next_chat", {
+      fetch("https://krov-acoperisuri.onrender.com/next_chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -323,7 +324,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/comanda", {
+      fetch("https://krov-acoperisuri.onrender.com/comanda", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -366,7 +367,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/numar_de_telefon", {
+      fetch("https://krov-acoperisuri.onrender.com/numar_de_telefon", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -413,7 +414,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/categorie", {
+      fetch("https://krov-acoperisuri.onrender.com/categorie", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -461,7 +462,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/produs", {
+      fetch("https://krov-acoperisuri.onrender.com/produs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -511,7 +512,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/culoare", {
+      fetch("https://krov-acoperisuri.onrender.com/culoare", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -558,7 +559,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/cantitate", {
+      fetch("https://krov-acoperisuri.onrender.com/cantitate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -603,7 +604,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/final_stage", {
+      fetch("https://krov-acoperisuri.onrender.com/final_stage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: userName, interests: message, message: message, language: window.language })
@@ -633,7 +634,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/check_resp", {
+      fetch("https://krov-acoperisuri.onrender.com/check_resp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: userName, interests: message, message: message, language: window.language })
@@ -677,7 +678,7 @@ const LiveChat: React.FC = () => {
       setUserInterests(message);
 
     
-      fetch("http://127.0.0.1:5000/ai_mai_comandat", {
+      fetch("https://krov-acoperisuri.onrender.com/ai_mai_comandat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: userName, interests: message, message: message, language: window.language })
@@ -711,7 +712,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/numar_de_telefon_final", {
+      fetch("https://krov-acoperisuri.onrender.com/numar_de_telefon_final", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: userName, interests: message, message: message, language: window.language })
@@ -752,7 +753,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/comanda_final", {
+      fetch("https://krov-acoperisuri.onrender.com/comanda_final", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: userName, interests: message, message: message, language: window.language })
@@ -791,7 +792,7 @@ const LiveChat: React.FC = () => {
       setMessage("");
       setIsTyping(true);
     
-      fetch("http://127.0.0.1:5000/ai_mai_comandat_welcome", {
+      fetch("https://krov-acoperisuri.onrender.com/ai_mai_comandat_welcome", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: userName, interests: message, message: message, language: window.language })
