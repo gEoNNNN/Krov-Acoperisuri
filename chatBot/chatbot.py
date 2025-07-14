@@ -12,7 +12,7 @@ import pandas as pd
 from thefuzz import fuzz
 from thefuzz import process
 import test
-from test import categoria_preferata
+from test import categoria_preferata, extrage_culori_si_coduri
 import re
 from difflib import SequenceMatcher
 import categorie 
@@ -47,6 +47,23 @@ df = pd.read_excel('chatBot/p.xlsx')
 categorii = df['Categorie']
 categorii_unice = list(dict.fromkeys(categorii.dropna().astype(str)))
 print("categorii unice = " , categorii_unice)
+
+
+
+
+culori_hex = {
+    "roșu oxizi": "#6E1414",
+    "maro ciocolatiu": "#381819",
+    "gri închis": "#2F2F2F",
+    "roșu vin": "#800020",
+    "verde pădure": "#228B22",
+    "gri grafit": "#474A51",
+    "gri antracit": "#383E42",
+    "negru intens": "#000000",
+    "roșu": "#FF0000",
+    "albastru cobalt": "#0047AB",
+    "alb semilucios": "#F5F5F5"
+}
 
 
 
@@ -135,13 +152,13 @@ def start():
 
 
 
-def is_fuzzy_comanda(user_text, threshold=90):
+def is_fuzzy_comanda(user_text, threshold=80):
 
     comanda_keywords = [
         # română
         "comand", "cumpăr", "achiziționez", "trimit factură", "factura", "plătesc", "finalizez",
         "trimit date", "comand", "cumpăr", "pregătiți comanda", "ofertă pentru", "cerere ofertă",
-        "cât costă x bucăți", "preț 50 mp", "livrare comandă", "plată", "comanda", "comanda" , "curier",
+        "cât costă x bucăți", "preț 50 mp", "livrare comandă", "plată", "comanda", "comanda" "curier",
         
         # rusă (litere chirilice, intenție clară de comandă)
         "заказ", "купить", "хочу купить", "покупка", "покупаю", "оплата", "оформить заказ", "счет", "выставите счет",
@@ -154,7 +171,6 @@ def is_fuzzy_comanda(user_text, threshold=90):
     for keyword in comanda_keywords:
         for word in words:
             score = fuzz.partial_ratio(word, keyword)
-            print(score, "=" , word , "+" , keyword)
             if score >= threshold:
                 return True
         # verificăm și fraze întregi
@@ -191,7 +207,6 @@ def check_interest(interest):
         "- expresii de încheiere a comenzii: 'hai să finalizăm', 'pregătiți comanda', 'vă trimit datele de facturare'\n\n"
         
         "3. altceva - doar pentru:\n"
-        "- mesaje ce conțin doar un cuvânt referitor la limbă (ex: 'romana', 'engleza', 'franceza') sau alte denumiri de limbi"
         "- saluturi, mulțumiri fără context de afacere\n"
         "- glume, spam, comentarii irelevante\n"
         "- mesaje fără nicio legătură cu produsele sau comenzile\n\n"
@@ -201,7 +216,7 @@ def check_interest(interest):
         "- Orice ambiguitate => produs_informații (mai bine fals pozitiv decât să ratezi o intenție)\n"
         "- Doar când există verb clar de comandă => clasifici ca 'comandă'\n\n"
         "- Verbe generice precum „vreau”, „doresc”, „aș vrea” NU implică automat comandă dacă nu sunt urmate de „să comand”, „să cumpăr”, „factură”, etc.\n\n"
-        "- Mesajele care conțin doar un singur cuvânt ce denotă o limbă (ex: 'romana', 'engleza', 'franceza') TREBUIE să fie clasificate ca 'altceva'\n\n"
+        
     
         "EXEMPLE CLASIFICATE:\n"
         "'Ce modele impermeabile aveți?' => produs_informații\n"
@@ -212,7 +227,6 @@ def check_interest(interest):
         "'Vreau să comand 100mp pentru luni' => comandă\n"
         "'Trimiteți factura pe email' => comandă\n"
         "'Salut, bună' => altceva\n\n"
-        "'romana' => altceva"
         
         f"Mesaj de analizat: \"{interest}\"\n\n"
         "Răspunde STRICT cu unul dintre tag-uri: produs_informații, comandă, altceva. Fără explicații suplimentare."
@@ -220,7 +234,6 @@ def check_interest(interest):
 
     messages = [{"role": "system", "content": interests_prompt}]
     response = ask_with_ai(messages)
-    print("'response' = " , response)
     return response
 
 def check_interest_rus(interest):
@@ -298,7 +311,6 @@ def interests():
     user_data = request.get_json()
     interest = user_data.get("name", "prieten")
     language_saved = user_data.get("language")
-    print("interests = " , interest)
     print(language_saved)
     if language_saved == "RO":
         interest_checked = check_interest(interest)
@@ -422,18 +434,74 @@ def interests():
 
 
         elif (interest_checked == "comandă"):
-            if language_saved == "RO":
-                reply = (
-                    "📦 Pentru a te putea ajuta cât mai bine, spune-mi te rog dacă <strong>ai mai avut comenzi la noi</strong> înainte.<br><br>"
-                    "💬 Te rog să răspunzi cu <strong>DA</strong> sau <strong>NU</strong>, ca să putem continua comanda."
-                )
 
-            else:
-                reply = (
-                    "📦 Чтобы мы могли помочь тебе как можно лучше, пожалуйста, скажи, <strong>делал(а) ли ты у нас заказы ранее</strong>.<br><br>"
-                    "💬 Пожалуйста, ответь <strong>ДА</strong> или <strong>НЕТ</strong>, чтобы мы могли продолжить оформление заказа."
-                )
-            return jsonify({"ask_interests": reply})
+            if preferinte["Response_Comanda"] == "DA":
+                    print("Sunt aici")
+                    if language_saved == "RO":
+                        reply = (
+                            "🎉 Ne bucurăm enorm să aflăm că <strong>ai intentii serioase</strong> – îți mulțumim pentru încredere și loialitate! 💚<br><br>"
+                            "📝 Ne-ai putea lăsa, te rog, <strong>numele și prenumele</strong> ? 😊"
+                        )
+                    else:
+                        reply = (
+                            "🎉 Мы очень рады узнать, что у вас <strong>серьёзные намерения</strong> – благодарим за доверие и преданность! 💚<br><br>"
+                            "📝 Пожалуйста, укажите ваше <strong>имя и фамилию</strong> ? 😊"
+                        )
+                    
+                    return jsonify({"ask_interests": reply})
+            elif preferinte["Response_Comanda"] == "NU":
+                if language_saved == "RO":
+                    messages = [
+                        {
+                            "role": "user",
+                            "content": (
+                                "Nu spune niciodată „Salut”, gen toate chestiile introductive, pentru că noi deja ducem o discuție și ne cunoaștem. "
+                                "Fa promptul frumos , nu foloseste emoji-uri deloc ( este despre un business de acoperisuri ) , scrie categoriile in '' , gen 'china' , fara '-' in fata"
+                                "Esti un chatbot inteligent care creezi un prompt interactiv si frumos pentru user si il intrebi ce produse doreste , din cele de mai jos (trebuie incluse toate in prompt fara RoofArt in fata):"
+                                f"Acestea sunt toate categoriile disponibile : {categorii_unice}"
+                                "Rogi userul sa raspunda cu denumirea exacta a produsului din lista de categorii"
+                            )
+                        }
+                    ]
+
+                    message = (
+                        "✨ <strong>Împreună vom parcurge pas cu pas</strong> totul și vom <strong>finaliza comanda ta</strong>. 🛒💚<br><br>"
+                    )
+                elif language_saved == "RU":
+                    messages = [
+                        {
+                            "role": "user",
+                            "content": (
+                                "Никогда не говори «Привет», никаких вступительных фраз, потому что мы уже ведём разговор и знаем друг друга. "
+                                "Сделай подсказку красивой, не используй вообще никаких эмодзи (это про крышный бизнес), пиши категории в '' кавычках, например 'china', без дефиса перед ними. "
+                                "Ты — умный чатбот, который создаёт интерактивную и красивую подсказку для пользователя и спрашивает, какие продукты он хочет из следующих (все должны быть включены в подсказку без RoofArt перед ними): "
+                                f"Это все доступные категории: {categorii_unice} "
+                                "Попроси пользователя ответить точным названием продукта из списка категорий."
+                            )
+                        }
+                    ]
+                
+                    message = (
+                        "✨ <strong>Мы вместе пройдём шаг за шагом</strong> через всё и <strong>завершим твой заказ</strong>. 🛒💚<br><br>"
+                    )
+
+
+                reply = ask_with_ai(messages, temperature=0.9 , max_tokens= 400)
+
+                pos = reply.rfind("'")
+                if pos != -1:
+                    reply = reply[:pos+1] + "<br><br>" + reply[pos+1:]
+
+                pos = reply.rfind(":")
+                if pos != -1:
+                    reply = reply[:pos+1] + "<br>" + reply[pos+1:]
+
+                reply = format_product_mentions(reply)
+                reply = clean_punct_except_numbers(reply)
+                message += reply
+                reply = message
+                return jsonify({"ask_interests": reply})
+                
         else:
             if language_saved == "RO":
                 messages = [
@@ -454,8 +522,8 @@ def interests():
                     }
                 ]
 
+            response = ask_with_ai(messages, temperature= 0.9 , max_tokens= 400)
 
-        response = ask_with_ai(messages, temperature= 0.9 , max_tokens= 400)
 
         if (interest_checked == "altceva"):
             if language_saved == "RO":
@@ -2092,14 +2160,50 @@ def produs():
 
     produse = preferinte["Produsele"]
     produse_ro = preferinte["Produsele_RO"]
-    if "nu sunt disponibile" in produse_ro.lower():
+    culor = ""
+    if "nu sunt specificate" in produse_ro.lower():
         culori = False
     else:
         culori = True
-    
+
+    print(culori)
+    if culori:
+        produse_split = preferinte["Produsele_RO"].split("Culori disponibile:")
+        if len(produse_split) > 1:
+            culori_html = produse_split[1]
+            
+            # Extragem doar partea cu <div>-urile cu nume de culoare
+            soup = BeautifulSoup(culori_html, "html.parser")
+            divuri = soup.find_all("div")
+            
+            lista_culori = []
+            for div in divuri:
+                culoare = div.get_text(strip=True)
+                if culoare:
+                    lista_culori.append(culoare)
+
+            print("🎨 Culori extrase:")
+            print("lista_culori : " , lista_culori)
+            for c in lista_culori:
+                print("-", c)
+                culor = culor + c + "\n"
+            print("culor" , culor)
+            if language_saved == "RU":
+                prompt = f"Te rog să traduci în limba rusă doar culorile din {culor}."
+                messages = [{"role": "system", "content": prompt}]
+                culor = ask_with_ai_3(messages).strip()
+                print("culori in culori: = " , culor)
+            response_culori = extrage_culori_si_coduri(culor,culori_hex)
+            print("response_culori in if = ", response_culori)
+    # else:
+    #     if language_saved == "RO":
+    #         response_culori = "<br><br><strong>Culorile nu sunt disponibile</strong> (poti alege orice culoare)"
+    #     elif language_saved == "RU":
+    #         response_culori = "<br><br><strong>Цвета недоступны</strong> (можешь выбрать любой цвет)"
 
     rezultat = function_check_product(interests , preferinte["Produsele"], language_saved)
     print("rezultat = " , rezultat)
+    print(response_culori)
 
     if rezultat == "NU":
         length_check = 0
@@ -2117,6 +2221,7 @@ def produs():
                         "✅ Mulțumim pentru alegerea ta! 🛒 Produsul a fost notat cu succes. 💬<br><br>"
                         "🎨 Acum, te rog să alegi <strong>culoarea dorită</strong> pentru acest produs.<br>"
                         "📋 Scrie numele exact al culorii , iar eu mă ocup de restul! 😊"
+                        f"{response_culori}"
                     )
                 })
             else:
@@ -2125,6 +2230,7 @@ def produs():
                         "✅ Спасибо за ваш выбор! 🛒 Товар успешно добавлен. 💬<br><br>"
                         "🎨 Теперь, пожалуйста, выберите <strong>желаемый цвет</strong> для этого товара.<br>"
                         "📋 Напишите точное название цвета, а я позабочусь обо всем остальном! 😊"
+                        f"{response_culori}"
                     )
                 })
         else:
@@ -2258,7 +2364,7 @@ def culoare():
     produse_ro = preferinte["Produsele_RO"]
     culor = ""
 
-    if "nu sunt disponibile" in produse_ro.lower():
+    if "nu sunt specificate" in produse_ro.lower():
         culori = False
     else:
         culori = True
@@ -2447,8 +2553,13 @@ def ai_mai_comandat():
     interests = data.get("interests", "")
     message = data.get("message", "")
     language_saved = data.get("language","")
-
-    response = check_response_comanda(message)
+    if preferinte["Response_Comanda"] == "":
+        response = check_response_comanda(message)
+    else:
+        if preferinte["Response_Comanda"] == "DA":
+            response = "DA"
+        elif preferinte["Response_Comanda"] == "NU":
+            response = "NU"
 
     print(response)
     
