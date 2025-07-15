@@ -26,8 +26,10 @@ import decking from "./assets/decking.webp"
 import sindrila from "./assets/sindrila.webp"
 import fixare from "./assets/suruburi, piulite si cuie.jpg"
 import lemn from "./assets/IMG-56c6529f6aeb21cf20480b7d941c1e24-V.jpg"
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const navigate = useNavigate();
   const services = [
                 {
                   text: "Țiglă metalică",
@@ -340,8 +342,8 @@ function App() {
         ? [services[mobileCardIndex % services.length]].map((card) => (
             <li
               className='Services-card'
-              key={`${card.text}-mobile-${mobileCardIndex}`} 
-              onClick={() => window.open(card.link, "_blank")}
+              key={`${card.text}-mobile-${mobileCardIndex}`}
+              onClick={() => navigate(card.link)}
               tabIndex={0}
               role="button"
               aria-label={card.text}
@@ -359,7 +361,10 @@ function App() {
               <li
                 className='Services-card'
                 key={card.text}
-                onClick={() => window.open(card.link, "_blank")}
+                onClick={() => {
+                  navigate(card.link);
+                  window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); // Scrolls to top instantly
+                }}
                 tabIndex={0}
                 role="button"
                 aria-label={card.text}
