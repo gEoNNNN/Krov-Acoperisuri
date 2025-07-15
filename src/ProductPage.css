@@ -1,0 +1,103 @@
+.tigla-metalica-info-page {
+  font-family: 'Montserrat', sans-serif;
+  background: #f7f9fc;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+.tigla-metalica-header {
+  background: linear-gradient(90deg, #2C5B7C 0%, #17405a 100%);
+  color: #fff;
+  padding: 4vw 0 2vw 0;
+  text-align: center;
+  position: relative;
+}
+
+.tigla-metalica-header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3vw;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.tigla-metalica-subtitle {
+  font-size: 1.5vw;
+  margin-top: 1vw;
+  font-weight: 400;
+}
+
+.tigla-metalica-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+  margin: 4vw 8vw;
+  background: #fff;
+  border-radius: 2vw;
+  box-shadow: 0 4px 24px rgba(44, 91, 124, 0.10);
+  padding: 3vw;
+}
+
+.tigla-metalica-content section {
+  margin-bottom: 2vw;
+}
+
+.tigla-metalica-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2vw;
+  color: #2C5B7C;
+  margin-bottom: 1vw;
+}
+
+.tigla-metalica-content p {
+  font-size: 1.1vw;
+  color: #2C2C2C;
+  margin-bottom: 1vw;
+}
+
+.tigla-metalica-content ul {
+  margin-left: 2vw;
+  margin-bottom: 1vw;
+  font-size: 1.1vw;
+  color: #2C2C2C;
+}
+
+.back-button {
+  margin: 2vw 0vw 1vw 2vw;
+  padding: 0.7vw 2vw;
+  background: #2C5B7C;
+  color: #fff;
+  border: none;
+  border-radius: 1vw;
+  font-size: 1.2vw;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(44,91,124,0.08);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.back-button:hover {
+  background: #17405a;
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .tigla-metalica-content {
+    margin: 4vw 2vw;
+    padding: 4vw 2vw;
+  }
+  .tigla-metalica-header h1 {
+    font-size: 6vw;
+  }
+  .tigla-metalica-subtitle {
+    font-size: 3vw;
+  }
+  .tigla-metalica-content h2 {
+    font-size: 4vw;
+  }
+  .tigla-metalica-content p,
+  .tigla-metalica-content ul {
+    font-size: 3vw;
+  }
+}

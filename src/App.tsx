@@ -32,37 +32,37 @@ function App() {
                 {
                   text: "Țiglă metalică",
                   img: servicecard1,
-                  link: "https://www.elforum.info/topic/131146-acoperis-tigla-metalica/"
+                  link: "/tigla-metalica"
                 },
                 {
                   text: "Țiglă ceramică",
                   img: servicecard2,
-                  link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/20812-alege-tigla"
+                  link: "/tigla-ceramica"
                 },
                 {
                   text: "Streașini personalizate",
                   img: servicecard3,
-                  link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/33360-streasina-terasa"
+                  link: "/streasini-personalizate"
                 },
                 {
                   text: "Decking",
                   img: decking,
-                  link: "https://www.hidroset.ro/blog/avantaje-si-dezavantaje-la-un-deck-pe-terasa/"
+                  link: "/decking"
                 },
                 {
                   text: "Șindrilă bituminoasă",
                   img: sindrila,
-                  link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/15957-sindrila-bituminoasa"
+                  link: "/sindrila-bituminoasa"
                 },
                 {
                   text: "Lemn pentru acoperiș",
                   img: lemn,
-                  link: "https://forum.softpedia.com/topic/1195086-lemnul-pentru-acoperis-la-o-casa-noua/"
+                  link: "/lemn-pentru-acoperis"
                 },
                 {
                   text: "Sisteme de fixare",
                   img: fixare,
-                  link: "https://forum.misiuneacasa.ro/forum/amenajari-exterioare/invelitori-si-acoperisuri/34343-gaura-surub-acoperis-tabla"
+                  link: "/sisteme-de-fixare"
                 },
               ];
 
