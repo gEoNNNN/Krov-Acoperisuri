@@ -1321,6 +1321,10 @@ html, body {
     height: 6vw;
   }
 
+  .FAQ-list{
+    margin-left: -3vw;
+  }
+
   .hamburger-menu {
     display: flex;
     width: 14vw;
