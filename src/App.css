@@ -1142,6 +1142,14 @@ html, body {
 }
 
 @media (max-width: 630px) {
+  .Gallery-description{
+    font-size: 4vw;
+    width: 80vw;
+  }
+  .Gallery-title {
+    font-size: 4vw;
+  }
+
   .Footer-text {
     font-size: 5vw;
     margin-top: 8vw;
@@ -1186,6 +1194,9 @@ html, body {
   .navbar {
     display: none !important;
   }
+
+
+
   .hamburger-menu {
     display: flex;
   }
@@ -1304,6 +1315,12 @@ html, body {
 }
 
 @media (max-width: 630px) {
+  .Hero-text-button{
+    font-size: 2.3vw;
+    width: 29vw;
+    height: 6vw;
+  }
+
   .hamburger-menu {
     display: flex;
     width: 14vw;
