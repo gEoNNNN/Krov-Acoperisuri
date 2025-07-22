@@ -919,6 +919,7 @@ html, body {
     min-height: unset;
   }
 
+
   .AboutUS-image,
   .AboutUS-image-blue {
     position: absolute;
@@ -1003,6 +1004,13 @@ html, body {
     padding-top: 24vw;
     width: 100vw;
     min-height: unset;
+  }
+  .Footer-line {
+    margin-bottom: 5vw;
+  }
+
+  .Footer-Copyright {
+    margin-bottom: 10vw;
   }
 
   .Services-title,
@@ -1167,11 +1175,12 @@ html, body {
     font-size: 2vw;
     position: relative;
     top: 1vw;
-    margin-left: 15vw;
+    margin-left: 4vw;
     margin-top: 10vw;
   }
   .Footer-links-list li a {
-    font-size: 2vw;
+    font-size: 3.2vw;
+    font-weight: 400;
   }
   .Footer-Copyright {
     font-size: 3vw;
