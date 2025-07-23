@@ -100,4 +100,10 @@
   .tigla-metalica-content ul {
     font-size: 3vw;
   }
+  .back-button {
+    margin: 4vw 0vw 2vw 4vw;
+    padding: 2vw 4vw;
+    font-size: 3.5vw;
+    border-radius: 2vw;
+  }
 }
