@@ -287,9 +287,8 @@ function App() {
         <div className='AboutUs'>
           <h1 className='AboutUs-title'>Cine <span className="bold-aboutus">Suntem Noi?</span></h1>
           <h1 className='AboutUs-description-one'>
-              <span className="bold-aboutus">Krov Acoperișuri</span>
-              este o companie de referință în domeniul construcțiilor de acoperișuri și sisteme pluviale, fondată de profesioniștii <span className="italic-text">Andrian Friiuc</span> și <span className="italic-text">Marcel Papuc</span>.<br />
-              Compania noastra asigura clienților din întreaga Republică Moldova servicii complete și materiale de înaltă calitate pentru acoperișuri și garduri.
+              <span className="bold-aboutus">Krov Acoperișuri </span>
+               este o companie de referință în domeniul construcțiilor de acoperișuri și sisteme pluviale.
             </h1>
           <h1 className='AboutUs-description-two'><span className="bold-aboutus">Domeniile noastre de expertiză</span></h1>
           <ul className='AboutUs-description-three'>
